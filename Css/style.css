@@ -801,6 +801,7 @@ div#offerta_scroll input::placeholder {
 
 /* ------------------------------------------------------------MEDIA QUERIES--------------------------------------------------- */
 
+/* Desktop */
 @media (min-width: 768px) {
 
     .example-spacer {
@@ -886,8 +887,22 @@ div#offerta_scroll input::placeholder {
     .modal-open .modal {
         overflow-y: hidden;
     }
+
+    .modal .carousel-control-prev{
+        margin-left: -200px;
+    }
+
+    .modal .carousel-control-next{
+        margin-right: -200px;
+    }
+
+    .modal .carousel-control-next-icon, .modal .carousel-control-prev-icon{
+        width: 50px;
+        height: 50px;
+    }
 }
 
+/* Mobile */
 @media (max-width: 600px) {
 
     .fa-bed {

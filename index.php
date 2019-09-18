@@ -1,22 +1,22 @@
 <?php
 $n = null;
-$dataArrivo = filter_input(INPUT_POST, 'dataArrivo', FILTER_SANITIZE_SPECIAL_CHARS);
-$dataRitorno = filter_input(INPUT_POST, 'dataRitorno', FILTER_SANITIZE_SPECIAL_CHARS);
-$numAdulti = filter_input(INPUT_POST, 'numAdulti', FILTER_SANITIZE_SPECIAL_CHARS);
-$numCamere = filter_input(INPUT_POST, 'numCamere', FILTER_SANITIZE_SPECIAL_CHARS);;
-$n = filter_input(INPUT_POST, 'numBambini', FILTER_SANITIZE_SPECIAL_CHARS);
+$dataArrivo = filter_input(INPUT_GET, 'dataArrivo', FILTER_SANITIZE_SPECIAL_CHARS);
+$dataRitorno = filter_input(INPUT_GET, 'dataRitorno', FILTER_SANITIZE_SPECIAL_CHARS);
+$numAdulti = filter_input(INPUT_GET, 'numAdulti', FILTER_SANITIZE_SPECIAL_CHARS);
+$numCamere = filter_input(INPUT_GET, 'numCamere', FILTER_SANITIZE_SPECIAL_CHARS);;
+$n = filter_input(INPUT_GET, 'numBambini', FILTER_SANITIZE_SPECIAL_CHARS);
 $numBambini = (int) $n;
 
 $bambino = array(
-    $bambino1 = filter_input(INPUT_POST, 'bambino1', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino2 = filter_input(INPUT_POST, 'bambino2', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino3 = filter_input(INPUT_POST, 'bambino3', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino4 = filter_input(INPUT_POST, 'bambino4', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino5 = filter_input(INPUT_POST, 'bambino5', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino6 = filter_input(INPUT_POST, 'bambino6', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino7 = filter_input(INPUT_POST, 'bambino7', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino8 = filter_input(INPUT_POST, 'bambino8', FILTER_SANITIZE_SPECIAL_CHARS),
-    $bambino9 = filter_input(INPUT_POST, 'bambino9', FILTER_SANITIZE_SPECIAL_CHARS)
+    $bambino1 = filter_input(INPUT_GET, 'bambino1', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino2 = filter_input(INPUT_GET, 'bambino2', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino3 = filter_input(INPUT_GET, 'bambino3', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino4 = filter_input(INPUT_GET, 'bambino4', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino5 = filter_input(INPUT_GET, 'bambino5', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino6 = filter_input(INPUT_GET, 'bambino6', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino7 = filter_input(INPUT_GET, 'bambino7', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino8 = filter_input(INPUT_GET, 'bambino8', FILTER_SANITIZE_SPECIAL_CHARS),
+    $bambino9 = filter_input(INPUT_GET, 'bambino9', FILTER_SANITIZE_SPECIAL_CHARS)
 );
 
 
@@ -49,7 +49,7 @@ $bambino = array(
                     <div class="card card-style animated fadeInDown" style="max-width: 400px;">
                         <article class="card-body mx-auto">
                             <div class="card-body text-center">
-                                <form action="?" method="post">
+                                <form action="?" method="get">
                                     <div class="col-auto">
                                         <div class="input-group inputIcon">
                                             <div data-toggle="tooltip-dataArrivo" data-placement="top" title="" data-original-title="dd-mm-aaaa" class="input-group-prepend dp-size" id="divArrivo">
@@ -208,18 +208,18 @@ $bambino = array(
                     </div>
                 </form>
             </div>
-            <div id="divPrenota">
-                <div class="row">
-                    <div class="col-auto">
-                        <p>1x &nbsp; Doppia Classica &nbsp; Offerta Prenotazione Diretta Camera e Colazione &nbsp; Totale 877,50€</p>
-                    </div>
-                    <span class="example-spacer"></span>
-                    <div id="divOffertaScroll" class="col-auto">
-                        <span class="delete-selection">Rimuovi la tua scelta</span>
-                        <button>
-                            <a class="scroll btn-scroll" href="#offerta_scroll">PRENOTA</a>
-                        </button>
-                    </div>
+        </div>
+        <div id="divPrenota">
+            <div class="row">
+                <div class="col-auto">
+                    <p>1x &nbsp; Doppia Classica &nbsp; Offerta Prenotazione Diretta Camera e Colazione &nbsp; Totale 877,50€</p>
+                </div>
+                <span class="example-spacer"></span>
+                <div id="divOffertaScroll" class="col-auto">
+                    <span class="delete-selection">Rimuovi la tua scelta</span>
+                    <button>
+                        <a class="scroll btn-scroll" href="#offerta_scroll">PRENOTA</a>
+                    </button>
                 </div>
             </div>
         </div>
