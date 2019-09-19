@@ -440,8 +440,33 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
 
 #divPrenota {
     color: white;
-    padding: 15px 0px 15px 15px;
     background-color: #282451;
+    background-color: var(--input-dark-color);
+}
+
+#divPrenota .main-content{
+    padding: 15px 0px 15px 15px;
+}
+
+#divPrenotaDetails {
+    color: white;
+    padding: 15px 0px 15px 15px;
+    background-color: #3B3760;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.dpAppendDiv, .dpgAppend {
+    margin-left: 0;
+}
+
+#dpdAppend p, #dpmAppend p {
+    padding-right: 2vw;
 }
 
 div#divPrenota p {
@@ -700,16 +725,16 @@ div#offerta_scroll input::placeholder {
     border: none;
 }
 
-.modalText{
+.modalText {
     visibility: visible;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     color: white;
     margin-left: 3.2vw;
     margin-right: 3.8vw;
 }
 
-.modalText p{
+.modalText p {
     margin: 2vw;
 }
 
@@ -808,7 +833,7 @@ div#offerta_scroll input::placeholder {
         flex: 1 1 auto;
     }
 
-    .modalText{
+    .modalText {
         visibility: hidden;
     }
 
@@ -888,15 +913,16 @@ div#offerta_scroll input::placeholder {
         overflow-y: hidden;
     }
 
-    .modal .carousel-control-prev{
+    .modal .carousel-control-prev {
         margin-left: -200px;
     }
 
-    .modal .carousel-control-next{
+    .modal .carousel-control-next {
         margin-right: -200px;
     }
 
-    .modal .carousel-control-next-icon, .modal .carousel-control-prev-icon{
+    .modal .carousel-control-next-icon,
+    .modal .carousel-control-prev-icon {
         width: 50px;
         height: 50px;
     }
@@ -922,7 +948,7 @@ div#offerta_scroll input::placeholder {
     .modal-backdrop {
         opacity: 1 !important;
         background-color: black;
-     }
+    }
 }
 
 /* ------------------------------------------------------------REGOLE SPECIFICHE PER BROWSER------------------------------------ */
@@ -942,7 +968,7 @@ div#offerta_scroll input::placeholder {
         left: -130px !important;
     }
 
-    .child-spacing{
+    .child-spacing {
         top: 2px !important;
     }
 
@@ -966,22 +992,22 @@ div#offerta_scroll input::placeholder {
         margin-left: 2vw !important;
     }
 
-    .top::-ms-input-placeholder{
-        color:white !important;
+    .top::-ms-input-placeholder {
+        color: white !important;
     }
 
-    .form-control::-ms-input-placeholder{
-        color:white !important;
+    .form-control::-ms-input-placeholder {
+        color: white !important;
     }
 
     .form-control,
     .form-style {
-        background-color:rgba(255, 255, 255, 0.5) !important;
+        background-color: rgba(255, 255, 255, 0.5) !important;
     }
 
     div.down .form-control,
     div.down .form-style {
-        background-color:#282451 !important;
+        background-color: #282451 !important;
     }
 
 }
@@ -993,10 +1019,10 @@ div#offerta_scroll input::placeholder {
         padding-top: 7px;
     }
 
-    .iBambino{
+    .iBambino {
         top: -22px !important;
     }
-    
+
     .nav-btn {
         background-color: rgba(0, 0, 0, 0);
     }
@@ -1013,7 +1039,8 @@ div#offerta_scroll input::placeholder {
         color: white;
     }
 
-    .scroll-exp, .scroll-exp:hover{
+    .scroll-exp,
+    .scroll-exp:hover {
         font-weight: bold;
         margin-left: -10vw;
         background-color: #28A745;
@@ -1021,11 +1048,11 @@ div#offerta_scroll input::placeholder {
         padding: 5px 20px;
     }
 
-    .ie-show{
+    .ie-show {
         display: block !important;
     }
 
-    .ie-hide{
+    .ie-hide {
         display: none !important;
     }
 }

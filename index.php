@@ -1,4 +1,5 @@
 <?php
+// error_reporting(0);
 $n = null;
 $dataArrivo = filter_input(INPUT_GET, 'dataArrivo', FILTER_SANITIZE_SPECIAL_CHARS);
 $dataRitorno = filter_input(INPUT_GET, 'dataRitorno', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -18,9 +19,15 @@ $bambino = array(
     $bambino8 = filter_input(INPUT_GET, 'bambino8', FILTER_SANITIZE_SPECIAL_CHARS),
     $bambino9 = filter_input(INPUT_GET, 'bambino9', FILTER_SANITIZE_SPECIAL_CHARS)
 );
+$datePrenotazione = $dataArrivo . " - " . $dataRitorno;
 
-
-
+$format = 'd/m/Y';
+$dateA = DateTime::createFromFormat('d/m/Y', $dataArrivo);
+$dateR = DateTime::createFromFormat('d/m/Y', $dataRitorno);
+$timestampA = $dateA->getTimestamp();
+$timestampR = $dateR->getTimestamp();
+$daysBetween = $timestampR - $timestampA;
+$notti = round($daysBetween / (60 * 60 * 24));
 
 
 ?>
@@ -106,7 +113,7 @@ $bambino = array(
     <div id="rooms-view" class="down">
         <div class="navigation-bar">
             <div>
-                <form method="post">
+                <form method="get">
                     <div class="form-row align-items-center row" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px">
                         <div class="col-md-auto col-5">
                             <div class="input-group inputIcon">
@@ -210,17 +217,17 @@ $bambino = array(
             </div>
         </div>
         <div id="divPrenota">
-            <div class="row">
-                <div class="col-auto">
-                    <p>1x &nbsp; Doppia Classica &nbsp; Offerta Prenotazione Diretta Camera e Colazione &nbsp; Totale 877,50€</p>
-                </div>
-                <span class="example-spacer"></span>
+            <div class="row main-content">
+                <div id="dpmAppend" class="dpAppend col-9"></div>
+                <span class="delete-selection">Rimuovi la tua scelta</span>
                 <div id="divOffertaScroll" class="col-auto">
-                    <span class="delete-selection">Rimuovi la tua scelta</span>
-                    <button>
+                    <button style="margin-right: 0">
                         <a class="scroll btn-scroll" href="#offerta_scroll">PRENOTA</a>
                     </button>
                 </div>
+            </div>
+            <div id="divPrenotaDetails">
+                <div id="dpdAppend" class=""></div>
             </div>
         </div>
         <!-- The Modal -->
@@ -265,7 +272,7 @@ $bambino = array(
                 <div id="room1" class="card col-12 room-padding room-card img-resize" style="text-align: left;">
                     <div class="card-body">
                         <div class="box">
-                            <h4 class="card-title" style="text-align: left;">Camera Doppia</h4>
+                            <h4 class="card-title room-title" style="text-align: left;">Camera Doppia</h4>
                             <h2 class="card-title"><span class="badge badge-primary badge-prezzo">877,50€</span></h2>
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
@@ -340,7 +347,7 @@ $bambino = array(
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <h6>Totale <span style="font-size: 30px;">877,50€</span></h6>
+                                <h6>Totale <span span class="roomOfferPrice" style="font-size: 30px;">877,50€</span></h6>
                             </div>
                         </div>
                     </div>
@@ -369,7 +376,7 @@ $bambino = array(
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <h6>Totale <span style="font-size: 30px;">920,00€</span></h6>
+                                <h6>Totale <span span class="roomOfferPrice" style="font-size: 30px;">920,00€</span></h6>
                             </div>
                         </div>
                     </div>
@@ -377,7 +384,7 @@ $bambino = array(
                 <div id="room2" class="card col-12 room-padding room-card img-resize" style="text-align: left;">
                     <div class="card-body">
                         <div class="box click-room">
-                            <h4 class="card-title" style="text-align: left;">Camera Doppia</h4>
+                            <h4 class="card-title room-title" style="text-align: left;">Junior Suite</h4>
                             <h2 class="card-title"><span class="badge badge-primary badge-prezzo">877,50€</span></h2>
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted click-room" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
@@ -451,7 +458,7 @@ $bambino = array(
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <h6>Totale <span style="font-size: 30px;">877,50€</span></h6>
+                                <h6>Totale <span span class="roomOfferPrice" style="font-size: 30px;">877,50€</span></h6>
                             </div>
                         </div>
                     </div>
@@ -480,7 +487,7 @@ $bambino = array(
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <h6>Totale <span style="font-size: 30px;">920,00€</span></h6>
+                                <h6>Totale <span class="roomOfferPrice" style="font-size: 30px;">920,00€</span></h6>
                             </div>
                         </div>
                     </div>
@@ -522,23 +529,23 @@ $bambino = array(
                 <div class="offer-room-info">
                     <h4>Doppia Classica</h4>
                     <p>Offerta Prenotazione Diretta Camera e Colazione</p>
-                    <p>21/08/2019 - 22/08/2019</p>
+                    <p><?php echo $datePrenotazione ?></p>
                 </div>
                 <div class="offer-details">
                     <p>Notti</p>
-                    <p>1</p>
+                    <p><?php echo $notti ?></p>
                 </div>
                 <div class="offer-details">
                     <p>Adulti</p>
-                    <p>1</p>
+                    <p><?php echo $numAdulti ?></p>
                 </div>
                 <div class="offer-details">
                     <p>Bambini</p>
-                    <p>1</p>
+                    <p><?php echo $numBambini ?></p>
                 </div>
                 <div class="offer-details">
                     <p>Camere</p>
-                    <p>1</p>
+                    <p><?php echo $numCamere ?></p>
                 </div>
                 <div class="offer-details">
                     <p>TOTALE</p>
@@ -650,7 +657,6 @@ $bambino = array(
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
 
-
     <script>
         //Inizializzazione elementi
         const dataArrivo = document.getElementById("dataArrivo");
@@ -750,13 +756,54 @@ $bambino = array(
 
         })
 
+        var controller = [];
         $('.select-offer').on('change', function() {
+            var controllId = (this).id;
+            var offerNumber = $(this).val();
+            var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
+            var offerName = $(this).parents(".card-body").find(".offer-subtitle").html();
+            var roomName = $(this).parents(".card-selection").prev(".room-card").find(".room-title").html();
+            var aClassName = "a" + controllId;
+
             const cardSelection = $(this).parents(".card-selection");
             const roomCard = $(this).parents(".card-selection").prev('.room-card');
+
             if (this.value > 0) {
                 roomCard.addClass("room-selected");
+                if (controller.length == 0) {
+                    $("#dpmAppend").addClass("dpAppend");
+                    $("#dpdAppend").removeClass("dpAppend");
+                } else {
+                    $("#dpdAppend").addClass("dpAppend");
+                    $("#dpmAppend").removeClass("dpAppend");
+                    if (controller.length == 1) {
+                        if (!controller.includes(controllId)) {
+                            $(".dpAppendDiv").appendTo(".dpAppend");
+                            var gDiv = document.createElement("div");
+                            $(gDiv).addClass("row dpgAppend");
+                            var selectedRoomcount = $(".dpAppend").length + 1;
+                            $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<p><i style='vertical-align: middle;' class='fas fa-chevron-down btn-arrow'></i></p>");
+                            $("#dpmAppend").append(gDiv);
+                        }
+                    }
+
+                }
+
+                if (!controller.includes(controllId)) {
+                    var aDiv = document.createElement("div");
+                    aDiv.classList.add(aClassName, "row", "dpAppendDiv");
+                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "x</p>" + "<p>" + roomName + "</p>" + "<p>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
+                    $('.dpAppend').append(aDiv);
+                    controller.push(controllId);
+                } else {
+                    $('.' + aClassName).find(".offerNumber").text(offerNumber + "x");
+                }
             } else {
                 roomCard.removeClass("room-selected");
+                if (controller.includes(controllId)) {
+                    $('.' + aClassName).remove();
+                    controller = arrayRemove(controller, controllId);
+                }
             }
             roomCard.addClass("room-padding");
             cardSelection.addClass("selection-hide");
@@ -771,6 +818,13 @@ $bambino = array(
             }, 600);
 
         });
+
+        //Da sistemare perché non va ancora
+        $("#dpmAppend").click(function() {
+            if(controller.length < 0){
+                $("#divPrenotaDetails").toggle();
+            }
+        })
 
         //Funziona che controlla se far apparire o no la barra con i dettagli di prenotazione e se mobile o desktop
         function checkRoomSelection() {
@@ -798,6 +852,17 @@ $bambino = array(
                 }
             }
         }
+
+        // Funzione che fa' in modo che la barra dettagli ti segua
+        $(".down").scroll(function() {
+            var height = $(".down").scrollTop();
+            if (height > 100) {
+                $("#divPrenota").addClass("sticky");
+            } else {
+                $("#divPrenota").removeClass("sticky");
+            }
+        })
+
 
         //codice mostra dettagli mobile
         $(".show-mobile-details").click(function() {
@@ -836,6 +901,9 @@ $bambino = array(
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
             $('#divPrenota').hide();
+            $('#dpmAppend').empty();
+            $('#dpdAppend').empty();
+            controller = [];
             $('.room-offer1').each(function(i, obj) {
                 $('.room-offer1')[i].value = 0;
                 $('.room-offer2')[i].value = 0;
@@ -1076,6 +1144,14 @@ $bambino = array(
             divRitorno.setAttribute('data-original-title', '');
         }
 
+        //Funzione che rimuove un elemento specifico da un array
+        function arrayRemove(arr, value) {
+            return arr.filter(function(ele) {
+                return ele != value;
+            });
+
+        }
+
         function msieversion() {
 
             var ua = window.navigator.userAgent;
@@ -1092,7 +1168,6 @@ $bambino = array(
             return false;
         }
     </script>
-
     <?php
     //Chiamata alla funzione che gestisce le animazioni
     if ($n != null) {
