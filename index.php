@@ -24,10 +24,7 @@ $datePrenotazione = $dataArrivo . " - " . $dataRitorno;
 $format = 'd/m/Y';
 $dateA = DateTime::createFromFormat('d/m/Y', $dataArrivo);
 $dateR = DateTime::createFromFormat('d/m/Y', $dataRitorno);
-$timestampA = $dateA->getTimestamp();
-$timestampR = $dateR->getTimestamp();
-$daysBetween = $timestampR - $timestampA;
-$notti = round($daysBetween / (60 * 60 * 24));
+$notti = (($dateR->getTimestamp() - $dateA->getTimestamp()) / (60 * 60 * 24));
 
 
 ?>
@@ -777,18 +774,16 @@ $notti = round($daysBetween / (60 * 60 * 24));
                     $("#dpdAppend").addClass("dpAppend");
                     $("#dpmAppend").removeClass("dpAppend");
                     if (controller.length == 1) {
-                        if (!controller.includes(controllId)) {
+                        if (!controller.includes(controllId) && !$('.dpgAppend').length) {
                             $(".dpAppendDiv").appendTo(".dpAppend");
                             var gDiv = document.createElement("div");
-                            $(gDiv).addClass("row dpgAppend");
+                            $(gDiv).addClass("dpgAppend row");
                             var selectedRoomcount = $(".dpAppend").length + 1;
-                            $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<p><i style='vertical-align: middle;' class='fas fa-chevron-down btn-arrow'></i></p>");
+                            $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
                             $("#dpmAppend").append(gDiv);
                         }
                     }
-
                 }
-
                 if (!controller.includes(controllId)) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
@@ -799,7 +794,10 @@ $notti = round($daysBetween / (60 * 60 * 24));
                     $('.' + aClassName).find(".offerNumber").text(offerNumber + "x");
                 }
             } else {
-                roomCard.removeClass("room-selected");
+                if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
+                    roomCard.removeClass("room-selected");
+                }
+
                 if (controller.includes(controllId)) {
                     $('.' + aClassName).remove();
                     controller = arrayRemove(controller, controllId);
@@ -819,10 +817,20 @@ $notti = round($daysBetween / (60 * 60 * 24));
 
         });
 
-        //Da sistemare perché non va ancora
+        //Funziona che attiva i dettagli delle stanze selezionate sulla barra prenota per desktop
+        $('#divPrenotaDetails').hide();
         $("#dpmAppend").click(function() {
-            if(controller.length < 0){
+            console.log(this);
+            if ($(this).find(".dpgAppend").length) {
                 $("#divPrenotaDetails").toggle();
+
+                if ($("#divPrenotaDetails").is(":visible")) {
+                    $('.appendIcon').css("transform", "rotate(180deg)");
+                    $('#divPrenotaDetails').css("transform", "translateY(10px)");
+                } else {
+                    $('.appendIcon').css("transform", "");
+                    $('#divPrenotaDetails').css("transform", "translateY(-20px)");
+                }
             }
         })
 
@@ -836,7 +844,6 @@ $notti = round($daysBetween / (60 * 60 * 24));
                         const aScroll = $(document.createElement('a'));
                         $(aScroll).addClass("scroll btn-scroll scroll-exp").attr("href", "#offerta_scroll").text("PRENOTA");
                         $("#divOffertaScroll").append(aScroll);
-                        // <span class="delete-selection">Rimuovi la tua scelta</span>
                     }
 
                 } else {
@@ -847,6 +854,8 @@ $notti = round($daysBetween / (60 * 60 * 24));
             } else {
                 if (window.matchMedia("(min-width: 768px)").matches) {
                     $("#divPrenota").hide();
+                    $('#dpmAppend').empty();
+                    $('#dpdAppend').empty();
                 } else {
                     $('#mobile-bar').hide();
                 }
@@ -887,12 +896,17 @@ $notti = round($daysBetween / (60 * 60 * 24));
         $('.btn-scroll').click(function() {
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
+            $('#divPrenota').hide();
         })
 
         $('.a-scroll').click(function() {
             if (window.matchMedia("(max-width: 767px)").matches) {
                 setTimeout(function() {
                     $('#mobile-bar').show();
+                }, 500);
+            } else {
+                setTimeout(function() {
+                    $('#divPrenota').show();
                 }, 500);
             }
         })

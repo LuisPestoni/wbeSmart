@@ -391,7 +391,7 @@ h5.testo-card {
     justify-content: center;
 }
 
-.btn-arrow {
+.btn-arrow, .appendIcon, #divPrenotaDetails {
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
