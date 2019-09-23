@@ -1,5 +1,4 @@
 <?php
-// error_reporting(0);
 $n = null;
 $dataArrivo = filter_input(INPUT_GET, 'dataArrivo', FILTER_SANITIZE_SPECIAL_CHARS);
 $dataRitorno = filter_input(INPUT_GET, 'dataRitorno', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -7,7 +6,6 @@ $numAdulti = filter_input(INPUT_GET, 'numAdulti', FILTER_SANITIZE_SPECIAL_CHARS)
 $numCamere = filter_input(INPUT_GET, 'numCamere', FILTER_SANITIZE_SPECIAL_CHARS);;
 $n = filter_input(INPUT_GET, 'numBambini', FILTER_SANITIZE_SPECIAL_CHARS);
 $numBambini = (int) $n;
-
 $bambino = array(
     $bambino1 = filter_input(INPUT_GET, 'bambino1', FILTER_SANITIZE_SPECIAL_CHARS),
     $bambino2 = filter_input(INPUT_GET, 'bambino2', FILTER_SANITIZE_SPECIAL_CHARS),
@@ -20,11 +18,13 @@ $bambino = array(
     $bambino9 = filter_input(INPUT_GET, 'bambino9', FILTER_SANITIZE_SPECIAL_CHARS)
 );
 $datePrenotazione = $dataArrivo . " - " . $dataRitorno;
+if ($dataArrivo != null && $dataRitorno != null) {
+    $dateA = DateTime::createFromFormat('d/m/Y', $dataArrivo);
+    $dateR = DateTime::createFromFormat('d/m/Y', $dataRitorno);
+    $diff = $dateA->diff($dateR);
+    $notti = $diff->d;
+}
 
-$format = 'd/m/Y';
-$dateA = DateTime::createFromFormat('d/m/Y', $dataArrivo);
-$dateR = DateTime::createFromFormat('d/m/Y', $dataRitorno);
-$notti = (($dateR->getTimestamp() - $dateA->getTimestamp()) / (60 * 60 * 24));
 
 
 ?>
