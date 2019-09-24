@@ -970,7 +970,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 container: cont,
                 todayHighlight: false,
                 autoclose: true,
-            })
+            });
 
             //Controlli datePicker data di Arrivo
             date_arriv.datepicker()
@@ -1002,7 +1002,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     date_rit.datepicker('setStartDate', getDataMin());
                     const dataCheck = date_arriv.datepicker('getDate');
 
-                    //Se il valore non è valido
+                    //Se la data è vuota
                     if (dataCheck == null) {
                         dataArrivo.classList.remove("is-valid");
                         dataArrivo.classList.add("is-invalid");
@@ -1011,7 +1011,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         dataRitorno.setAttribute('disabled', '');
                         toolTipErrore();
 
-                        //Se il valore è valido
+                        //Se è stato inserito una valore corretto
                     } else {
                         dataArrivo.classList.remove("is-invalid");
                         dataArrivo.classList.add("is-valid");
@@ -1047,7 +1047,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
                         //Se il valore Data Arrivo è valido
                     } else {
-
                         //Se il valore Data Partenza non è valido
                         if (dataCheck2 == null) {
                             dataRitorno.classList.remove("is-valid");
@@ -1069,7 +1068,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             }
                         }
                     }
-
                 });
 
             date_rit.datepicker()
@@ -1087,7 +1085,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
                         //Se il valore Data Arrivo è valido
                     } else {
-
                         //Se il valore Data Partenza non è valido
                         if (dataCheck2 == null) {
                             dataRitorno.classList.remove("is-valid");
