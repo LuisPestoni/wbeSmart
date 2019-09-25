@@ -275,11 +275,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
                         <div class="box row">
                             <div id="carousel1" class="carousel slide col-8 col-sm-6" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel1" data-slide-to="1"></li>
-                                    <li data-target="#carousel1" data-slide-to="2"></li>
-                                </ol>
                                 <div class="carousel-inner modal-toggle" data-toggle="modal" data-target="#myModal">
                                     <a class="carousel-control-prev carousel-zoom">
                                         <span aria-hidden="true"><i class="fas fa-search-plus"></i></span>
@@ -932,7 +927,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             $(modal_append).empty();
             var imgToAppend = $(this).children('.carousel-item');
             $(imgToAppend).clone().appendTo(modal_append);
-        })
+        });
 
         $(document).ready(function() {
 
