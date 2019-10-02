@@ -70,8 +70,6 @@ $(document).ready(function () {
                 if (!countOver) {
                     addSelect(EmptyDiv, count, "form-select");
                     countOver = true;
-                } else {
-
                 }
             } else {
                 addSelect(EmptyDiv, count, "form-select");

@@ -15,6 +15,6 @@ function AnimationSlide() {
     .to(".layer", 0.5, {autoAlpha: 0})
     .to(".top",1, {height: 0})
     .to(".down",1, {height: "100%"}, "-=1")
-    .fromTo(".navigation-bar",1,{autoAlpha: 1, x: "-100%"}, {x: "0%", ease: Power2.easeInOut})
-    .fromTo(".camere",1,{x: 30}, {autoAlpha: 1, x:0, ease: Power2.easeInOut}, "-=0.5");
+    tl.fromTo(".navigation-bar",1,{autoAlpha: 1, x: "-100%"}, {x: "0%", ease: Power2.easeInOut})
+    tl.fromTo(".camere",1,{x: 30}, {autoAlpha: 1, x:0, ease: Power2.easeInOut}, "-=0.5");
 }

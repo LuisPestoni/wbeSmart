@@ -175,7 +175,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             </div>
                         </div>
                     </div>
-                    <div id="BambiniDiv">
+                    <div id="BambiniDiv" class="animated">
                         <div id="close-childdiv">
                             <span><i id="close-child-icon" class="fas fa-times"></i></span>
                         </div>
@@ -213,7 +213,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 </form>
             </div>
         </div>
-        <div id="divPrenota">
+        <div id="divPrenota" class="animated">
             <div class="row main-content">
                 <div id="dpmAppend" class="dpAppend col-9"></div>
                 <span class="delete-selection">Rimuovi la tua scelta</span>
@@ -223,7 +223,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     </button>
                 </div>
             </div>
-            <div id="divPrenotaDetails">
+            <div id="divPrenotaDetails" class="animated">
                 <div id="dpdAppend" class=""></div>
             </div>
         </div>
@@ -515,7 +515,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
     </div>
     <div id="offerta_scroll">
         <div class="row offer-container">
-            <div class="col-12 col-md-4 offer-div">
+            <div class="col-12 col-md-4 offer-div animated">
                 <h2 class="offer-title">La tua prenotazione</h2>
                 <img src="./Img/camera1.jpeg" style="width:90%;">
                 <div class="offer-room-info">
@@ -545,7 +545,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 </div>
                 <p style="text-align:right;"><a class="scroll a-scroll" href="#rooms-view">Cambia Prenotazione</a></p>
             </div>
-            <div class="col-12 col-md-4 offer-div">
+            <div class="col-12 col-md-4 offer-div animated">
                 <h2 class="offer-title">I tuoi dati</h2>
                 <div class="row">
                     <div class="col-12 offer-input-div">
@@ -595,7 +595,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 offer-div">
+            <div class="col-12 col-md-4 offer-div animated">
                 <h2 class="offer-title">Metodo di pagamento</h2>
                 <div class="row">
                     <div class="col-6">
@@ -672,18 +672,36 @@ if ($dataArrivo != null && $dataRitorno != null) {
         //Codice div anni bambini
         $("#BambiniDiv").hide();
         $("#bBambino").click(function() {
-            $("#BambiniDiv").toggle();
+            if (!$("#BambiniDiv").is(":visible")) {
+                $("#BambiniDiv").toggle();
+                $("#BambiniDiv").removeClass("fadeOut");
+                $("#BambiniDiv").addClass("fadeIn");
+            } else {
+                $("#BambiniDiv").removeClass("fadeIn");
+                $("#BambiniDiv").addClass("fadeOut");
+                setTimeout(function() {
+                    $("#BambiniDiv").toggle();
+                }, 500);
+            }
 
             //Codice che chiude il div in caso l'utente clicchi al di fuori di esso
             $('body').click(function(evt) {
                 if (evt.target.id == "BambiniDiv" || evt.target.id == "nBambini") {
                     $("#BambiniDiv").show();
                 } else if (evt.target.id == "close-child-icon") {
-                    $("#BambiniDiv").hide();
+                    $("#BambiniDiv").removeClass("fadeIn");
+                    $("#BambiniDiv").addClass("fadeOut");
+                    setTimeout(function() {
+                        $("#BambiniDiv").hide();
+                    }, 500);
                 } else if ($(evt.target).closest('#BambiniDiv').length) {
                     return;
                 } else {
-                    $("#BambiniDiv").hide();
+                    $("#BambiniDiv").removeClass("fadeIn");
+                    $("#BambiniDiv").addClass("fadeOut");
+                    setTimeout(function() {
+                        $("#BambiniDiv").hide();
+                    }, 500);
                 }
             });
 
@@ -782,11 +800,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 if (!controller.includes(controllId)) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
-                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "x</p>" + "<p>" + roomName + "</p>" + "<p>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
+                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p>" + roomName + "</p>" + "<p>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
                     $('.dpAppend').append(aDiv);
                     controller.push(controllId);
                 } else {
-                    $('.' + aClassName).find(".offerNumber").text(offerNumber + "x");
+                    $('.' + aClassName).find(".offerNumber").text(offerNumber);
                 }
             } else {
                 if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
@@ -817,14 +835,20 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $("#dpmAppend").click(function() {
             console.log(this);
             if ($(this).find(".dpgAppend").length) {
-                $("#divPrenotaDetails").toggle();
+                // $("#divPrenotaDetails").toggle();
 
-                if ($("#divPrenotaDetails").is(":visible")) {
+                if (!$("#divPrenotaDetails").is(":visible")) {
+                    $("#divPrenotaDetails").show();
                     $('.appendIcon').css("transform", "rotate(180deg)");
-                    $('#divPrenotaDetails').css("transform", "translateY(10px)");
+                    $('#divPrenotaDetails').removeClass("fadeOut");
+                    $('#divPrenotaDetails').addClass("fadeInDown");
                 } else {
                     $('.appendIcon').css("transform", "");
-                    $('#divPrenotaDetails').css("transform", "translateY(-20px)");
+                    $('#divPrenotaDetails').removeClass("fadeInDown");
+                    $('#divPrenotaDetails').addClass("fadeOut");
+                    setTimeout(function() {
+                        $("#divPrenotaDetails").hide();
+                    }, 500);
                 }
             }
         })
@@ -834,6 +858,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
             if ($(".room-selected")[0]) {
                 if (window.matchMedia("(min-width: 768px)").matches) {
                     $("#divPrenota").show();
+                    $("#divPrenota").removeClass("fadeOutUp");
+                    $("#divPrenota").addClass("fadeInDown");
                     if (msieversion()) {
                         $("#divOffertaScroll").empty();
                         const aScroll = $(document.createElement('a'));
@@ -848,9 +874,13 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 }
             } else {
                 if (window.matchMedia("(min-width: 768px)").matches) {
-                    $("#divPrenota").hide();
-                    $('#dpmAppend').empty();
-                    $('#dpdAppend').empty();
+                    $("#divPrenota").removeClass("fadeInDown");
+                    $("#divPrenota").addClass("fadeOutUp");
+                    setTimeout(function() {
+                        $("#divPrenota").hide();
+                        $('#dpmAppend').empty();
+                        $('#dpdAppend').empty();
+                    }, 500);
                 } else {
                     $('#mobile-bar').hide();
                 }
@@ -909,9 +939,13 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $('.delete-selection').click(function() {
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
-            $('#divPrenota').hide();
-            $('#dpmAppend').empty();
-            $('#dpdAppend').empty();
+            $("#divPrenota").removeClass("fadeInDown");
+            $("#divPrenota").addClass("fadeOutUp");
+            setTimeout(function() {
+                $("#divPrenota").hide();
+                $('#dpmAppend').empty();
+                $('#dpdAppend').empty();
+            }, 500);
             controller = [];
             $('.room-offer1').each(function(i, obj) {
                 $('.room-offer1')[i].value = 0;
