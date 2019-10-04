@@ -964,20 +964,18 @@ if ($dataArrivo != null && $dataRitorno != null) {
         });
 
         $(document).ready(function() {
-
-            //Animazione scroll sezione prenotazione
+            //Transizione a sezione prenotazione
             var scrollLink = $('.scroll');
             scrollLink.click(function(event) {
                 if (/Edge/.test(navigator.userAgent)) {
                     document.getElementById('ckeditor_editor').scrollIntoView();
                 }
-                var hash = window.location.hash;
                 event.preventDefault();
                 $('body,html').animate({
                     scrollTop: $(this.hash).offset().top
                 }, 1000);
             })
-
+                
             //Datepicker
             //Inizializzazione DatePicker Data Arrivo
             const date_arriv = $('input[name="dataArrivo"]'); //our date input has the name "date"
