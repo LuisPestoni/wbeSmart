@@ -498,7 +498,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     </div>
                 </div>
             </div>
-            <div id="mobile-bar">
+            <div id="mobile-bar" class="animated">
                 <div class="row" style="margin-left: 0;">
                     <div class="col-2 mobile-bar-section delete-icon delete-selection">
                         <span><i class="fas fa-times"></i></span>
@@ -517,10 +517,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
         <div class="row offer-container">
             <div class="col-12 col-md-4 offer-div animated">
                 <h2 class="offer-title">La tua prenotazione</h2>
-                <img src="./Img/camera1.jpeg" style="width:90%;">
+                <img class="final-img" src="" style="width:90%;">
                 <div class="offer-room-info">
-                    <h4>Doppia Classica</h4>
-                    <p>Offerta Prenotazione Diretta Camera e Colazione</p>
+                    <div class="room-title-append">
+
+                    </div>
                     <p><?php echo $datePrenotazione ?></p>
                 </div>
                 <div class="offer-details">
@@ -728,42 +729,50 @@ if ($dataArrivo != null && $dataRitorno != null) {
             const CardSelection = $(this).parents(".room-card").next('.card-selection');
             const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
             const roomOffer2 = $(this).parents(".room-card").next('.card-selection').find('.room-offer2')[0].value;
-
-            if (flag) {
-                if (this.id == idTest) {
-                    CardSelection.addClass("selection-hide");
-                    flag = false;
-                    setTimeout(function() {
-                        CardSelection.toggle();
-                        roomCard.addClass("room-padding");
-                        if (roomOffer1 > 0 || roomOffer2 > 0) {
-                            roomCard.addClass("room-selected");
-                        } else {
-                            roomCard.removeClass("room-selected");
-                        }
-                        checkRoomSelection();
-                    }, 600);
+            if ($(this).find('.btn-arrow').css("transform") == 'none') {
+                $(this).find('.btn-arrow').css("transform", "rotate(180deg)");
+                $(this).find('.btn-roomInfo-Text').text("Nascondi offerte");
+            } else {
+                $(this).find('.btn-arrow').css("transform", "");
+                $(this).find('.btn-roomInfo-Text').text("Visualizza offerte");
+            }
+            if (!$('.card-selection').is(":visible")) {
+                if (flag) {
+                    if (this.id == idTest) {
+                        CardSelection.addClass("selection-hide");
+                        flag = false;
+                        setTimeout(function() {
+                            CardSelection.hide();
+                            roomCard.addClass("room-padding");
+                            if (roomOffer1 > 0 || roomOffer2 > 0) {
+                                roomCard.addClass("room-selected");
+                            } else {
+                                roomCard.removeClass("room-selected");
+                            }
+                            checkRoomSelection();
+                        }, 600);
+                    }
                 } else {
-
+                    CardSelection.removeClass("selection-hide");
+                    roomCard.removeClass("room-padding");;
+                    flag = true;
+                    CardSelection.show();
+                    idTest = this.id;
                 }
             } else {
-                CardSelection.removeClass("selection-hide");
-                roomCard.removeClass("room-padding");;
-                flag = true;
-                CardSelection.toggle();
-                idTest = this.id;
+                CardSelection.addClass("selection-hide");
+                flag = false;
+                setTimeout(function() {
+                    CardSelection.hide();
+                    roomCard.addClass("room-padding");
+                    if (roomOffer1 > 0 || roomOffer2 > 0) {
+                        roomCard.addClass("room-selected");
+                    } else {
+                        roomCard.removeClass("room-selected");
+                    }
+                    checkRoomSelection();
+                }, 600);
             }
-        })
-
-        $('.btn-roomInfo').click(function() {
-            if ($('.btn-arrow').css("transform") == 'none') {
-                $('.btn-arrow').css("transform", "rotate(180deg)");
-                $('.btn-roomInfo > div > h6').text("Nascondi offerte");
-            } else {
-                $('.btn-arrow').css("transform", "");
-                $('.btn-roomInfo > div > h6').text("Visualizza offerte");
-            }
-
         })
 
         var controller = [];
@@ -800,7 +809,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 if (!controller.includes(controllId)) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
-                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p>" + roomName + "</p>" + "<p>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
+                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p class='roomName'>" + roomName + "</p>" + "<p class='offerName'>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
                     $('.dpAppend').append(aDiv);
                     controller.push(controllId);
                 } else {
@@ -830,7 +839,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
         });
 
-        //Funziona che attiva i dettagli delle stanze selezionate sulla barra prenota per desktop
+        //Funzione che attiva i dettagli delle stanze selezionate sulla barra prenota per desktop
         $('#divPrenotaDetails').hide();
         $("#dpmAppend").click(function() {
             console.log(this);
@@ -853,7 +862,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }
         })
 
-        //Funziona che controlla se far apparire o no la barra con i dettagli di prenotazione e se mobile o desktop
+        //Funzione che controlla se far apparire o no la barra con i dettagli di prenotazione e se mobile o desktop
         function checkRoomSelection() {
             if ($(".room-selected")[0]) {
                 if (window.matchMedia("(min-width: 768px)").matches) {
@@ -869,6 +878,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
                 } else {
                     $('#mobile-bar').show();
+                    $("#mobile-bar").removeClass("fadeOutDown");
+                    $("#mobile-bar").addClass("fadeInUp");
                     $("#mobile-bar").css("position", "fixed");
                     $("#mobile-bar-details").css("position", "fixed");
                 }
@@ -882,7 +893,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         $('#dpdAppend').empty();
                     }, 500);
                 } else {
-                    $('#mobile-bar').hide();
+                    $("#mobile-bar").removeClass("fadeInUp");
+                    $("#mobile-bar").addClass("fadeOutDown");
+                    setTimeout(function() {
+                        $('#mobile-bar').hide();
+                    }, 500);
                 }
             }
         }
@@ -898,15 +913,13 @@ if ($dataArrivo != null && $dataRitorno != null) {
         })
 
 
-        //codice mostra dettagli mobile
+        //codice che mostra dettagli mobile
         $(".show-mobile-details").click(function() {
-            //alert($( this ).css( "transform" ));
             if ($(this).css("transform") == 'none') {
                 $(this).css("transform", "rotate(180deg)");
                 $('#mobile-bar-details').show();
                 $('#mobile-bar-details').css("padding-bottom", "8vh");
                 $('#mobile-bar-details').css("animation-name", "dettailsShow");
-
             } else {
                 $(this).css("transform", "");
                 $('#mobile-bar-details').css("padding-bottom", "0vh");
@@ -919,6 +932,37 @@ if ($dataArrivo != null && $dataRitorno != null) {
         });
 
         $('.btn-scroll').click(function() {
+            if ($(".dpAppendDiv").length > 1) {
+                $('.final-img').attr("src", "");
+                var finalRoomNames = [];
+                var finalOfferName = [];
+                $(".dpAppendDiv").each(function() {
+                    finalRoomNames.push($(document.createElement('h4')));
+                    finalOfferName.push($(document.createElement('p')));
+                });
+                var RoomNameTexts = [];
+                $(".roomName").each(function() {
+                    RoomNameTexts.push($(this).text());
+                });
+                var OfferNameTexts = [];
+                $(".offerName").each(function() {
+                    OfferNameTexts.push($(this).text());
+                });
+                for (i = 0; i < finalRoomNames.length; i++) {
+                    $(finalRoomNames[i]).text(RoomNameTexts[i]);
+                    $(finalOfferName[i]).text(OfferNameTexts[i]);
+                    $(".room-title-append").append(finalRoomNames[i], finalOfferName[i]);
+                }
+            } else {
+                $('.final-img').attr("src", "./Img/camera22.jpeg");
+                var RoomNameText = $('.roomName').text();
+                var OfferNameText = $('.offerName').text();
+                var finalRoomName = $(document.createElement('h4'));
+                var finalOfferName = $(document.createElement('p'));
+                $(finalRoomName).text(RoomNameText);
+                $(finalOfferName).text(OfferNameText);
+                $(".room-title-append").append(finalRoomName, finalOfferName);
+            }
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
             $('#divPrenota').hide();
@@ -934,17 +978,22 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     $('#divPrenota').show();
                 }, 500);
             }
+            setTimeout(function() {
+                $(".room-title-append").empty();
+            }, 500);
         })
 
         $('.delete-selection').click(function() {
-            $('#mobile-bar-details').hide();
-            $('#mobile-bar').hide();
+            $("#mobile-bar").removeClass("fadeInUp");
+            $("#mobile-bar").addClass("fadeOutDown");
             $("#divPrenota").removeClass("fadeInDown");
             $("#divPrenota").addClass("fadeOutUp");
             setTimeout(function() {
                 $("#divPrenota").hide();
                 $('#dpmAppend').empty();
                 $('#dpdAppend').empty();
+                $('#mobile-bar-details').hide();
+                $('#mobile-bar').hide();
             }, 500);
             controller = [];
             $('.room-offer1').each(function(i, obj) {
@@ -975,7 +1024,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     scrollTop: $(this.hash).offset().top
                 }, 1000);
             })
-                
+
             //Datepicker
             //Inizializzazione DatePicker Data Arrivo
             const date_arriv = $('input[name="dataArrivo"]'); //our date input has the name "date"
