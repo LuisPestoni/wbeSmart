@@ -722,9 +722,15 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $('#mobile-bar').hide();
         $('#mobile-bar-details').hide();
         flag = false;
-        var idTest;
 
         $('.btn-roomInfo').click(function() {
+            if ($('.card-selection').is(":visible")) {
+                $('.card-selection').addClass("selection-hide");
+                $('.btn-arrow').css("transform", "");
+                $('.btn-roomInfo-Text').text("Visualizza offerte");
+                $(".room-card").addClass("room-padding");
+                $('.card-selection').hide();           
+            }
             const roomCard = $(this).parents(".room-card");
             const CardSelection = $(this).parents(".room-card").next('.card-selection');
             const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
@@ -736,28 +742,21 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $(this).find('.btn-arrow').css("transform", "");
                 $(this).find('.btn-roomInfo-Text').text("Visualizza offerte");
             }
-            if (!$('.card-selection').is(":visible")) {
+            if ($(".room-padding").length==2) {
                 if (flag) {
-                    if (this.id == idTest) {
-                        CardSelection.addClass("selection-hide");
-                        flag = false;
-                        setTimeout(function() {
-                            CardSelection.hide();
-                            roomCard.addClass("room-padding");
-                            if (roomOffer1 > 0 || roomOffer2 > 0) {
-                                roomCard.addClass("room-selected");
-                            } else {
-                                roomCard.removeClass("room-selected");
-                            }
-                            checkRoomSelection();
-                        }, 600);
+                    if ($(this).find('.btn-roomInfo-Text').text() == "Visualizza offerte") {
+                        $('.card-selection').addClass("selection-hide");
+                    } else {
+                        CardSelection.removeClass("selection-hide");
+                        roomCard.removeClass("room-padding");
+                        flag = true;
+                        CardSelection.show();
                     }
                 } else {
                     CardSelection.removeClass("selection-hide");
-                    roomCard.removeClass("room-padding");;
+                    roomCard.removeClass("room-padding");
                     flag = true;
                     CardSelection.show();
-                    idTest = this.id;
                 }
             } else {
                 CardSelection.addClass("selection-hide");
@@ -844,8 +843,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $("#dpmAppend").click(function() {
             console.log(this);
             if ($(this).find(".dpgAppend").length) {
-                // $("#divPrenotaDetails").toggle();
-
                 if (!$("#divPrenotaDetails").is(":visible")) {
                     $("#divPrenotaDetails").show();
                     $('.appendIcon').css("transform", "rotate(180deg)");
