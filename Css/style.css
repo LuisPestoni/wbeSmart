@@ -221,6 +221,7 @@ div.down input:focus {
     border-color: var(--nav-btn-color);
     background-color: rgba(255, 255, 255, 0);
     margin-right: 3vw;
+    height: 38px;
 }
 
 .nav-btn:hover {
@@ -313,6 +314,12 @@ h5.testo-card {
 .CorrectIcon {
     color: #28A745 !important;
     color: var(--correct-color) !important;
+}
+
+.second-form{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px
 }
 
 #nBambini {
@@ -421,6 +428,10 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     background-color: white;
     color: rgba(19, 15, 64, 1);
     color: var(--main-secondary-color);
+}
+
+.modal-toggle{
+    border-radius: 5px;
 }
 
 

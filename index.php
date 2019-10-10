@@ -25,6 +25,9 @@ if ($dataArrivo != null && $dataRitorno != null) {
     $notti = $diff->d;
 }
 
+// $str = file_get_contents('https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1');
+// $json = json_decode($str, true);
+// echo $json;
 
 
 ?>
@@ -111,7 +114,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         <div class="navigation-bar">
             <div>
                 <form method="get">
-                    <div class="form-row align-items-center row" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px">
+                    <div class="form-row align-items-center row second-form">
                         <div class="col-md-auto col-5">
                             <div class="input-group inputIcon">
                                 <div class="input-group-prepend">
@@ -171,7 +174,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <span class="example-spacer"></span>
                         <div class="col-auto">
                             <div class="form-group">
-                                <button style="height: 38px" class="btn btn-primary nav-btn input-spacing" name="submit" type="submit">Cerca</button>
+                                <button class="btn btn-primary nav-btn input-spacing" name="submit" type="submit">Cerca</button>
                             </div>
                         </div>
                     </div>
@@ -649,6 +652,26 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
+
+    <!-- <script>
+        const api_url = 'https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1';
+        async function getJson() {
+            //const response = await fetch(api_url);
+            // const data = await response.json();
+           const response = await fetch(api_url, {
+                method: 'post',
+                headers: new Headers({
+                    'Access-Control-Allow-Origin': 'https://wbes.nivula.net/',
+                    'Access-Control-Allow-Credentials': 'true',
+                    'Authorization': 'LuisAPI:eb63eb2650d3b9d499af59afa647f207'
+                })
+            });
+            const data = await response.json();
+            console.log(data);
+        }
+
+        getJson();
+    </script> -->
 
     <script>
         //Inizializzazione elementi
