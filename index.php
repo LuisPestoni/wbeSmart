@@ -554,47 +554,47 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 <div class="row">
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="name" name="name" placeholder="Nome">
+                            <input class="form-control form-style" id="name" name="name" placeholder="Nome" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="lastName" name="lastName" placeholder="Cognome">
+                            <input class="form-control form-style" id="lastName" name="lastName" placeholder="Cognome" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="email" name="email" placeholder="Email">
+                            <input class="form-control form-style" id="email" name="email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="phone" name="phone" placeholder="Telefono">
+                            <input class="form-control form-style" id="phone" name="phone" placeholder="Telefono" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="adress" name="adress" placeholder="Indirizzo">
+                            <input class="form-control form-style" id="adress" name="adress" placeholder="Indirizzo" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="city" name="city" placeholder="Città">
+                            <input class="form-control form-style" id="city" name="city" placeholder="Città" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="country" name="country" placeholder="Nazione">
+                            <input class="form-control form-style" id="country" name="country" placeholder="Nazione" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="region" name="region" placeholder="Provincia">
+                            <input class="form-control form-style" id="region" name="region" placeholder="Provincia" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="cap" name="cap" placeholder="CAP">
+                            <input class="form-control form-style" id="cap" name="cap" placeholder="CAP" required>
                         </div>
                     </div>
                 </div>
@@ -654,23 +654,35 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script type="text/javascript" src="./Js/script.js"></script>
 
     <!-- <script>
-        const api_url = 'https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1';
-        async function getJson() {
-            //const response = await fetch(api_url);
-            // const data = await response.json();
-           const response = await fetch(api_url, {
-                method: 'post',
-                headers: new Headers({
-                    'Access-Control-Allow-Origin': 'https://wbes.nivula.net/',
-                    'Access-Control-Allow-Credentials': 'true',
-                    'Authorization': 'LuisAPI:eb63eb2650d3b9d499af59afa647f207'
-                })
+        const USERNAME = "Luis API";
+        const PASSWORD = "eb63eb2650d3b9d499af59afa647f207";
+        const urlApi = 'https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1'
+        function apiLaunch() {
+            $.ajax({
+                url: urlApi,
+                type: 'GET',
+                username: USERNAME,
+                password: PASSWORD,
+                dataType: "jsonp",
+                data: {
+                    get_param: 'value'
+                },
+                headers: {
+                    "Authorization": "Basic " + btoa(USERNAME + ":" + PASSWORD),
+                    'Access-Control-Allow-Credentials' : true,
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET',
+                    'Access-Control-Allow-Headers':'application/json',
+                },
+                success: function(data) {
+                    alert("ci sei riuscito");
+                },
+                error: function(error){
+                    alert("non riuscito");
+                }
             });
-            const data = await response.json();
-            console.log(data);
         }
-
-        getJson();
+        apiLaunch();
     </script> -->
 
     <script>
@@ -684,6 +696,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
         const ritornoIcon = document.getElementById("ritornoIcon");
         const input_bambino = document.querySelector('#numBambini');
         var cardSelection = document.getElementsByClassName('card-selection');
+
+        //creare una classe solo per i datepicker per selezionarli tutti e renderli readonly su telefono
+        if (window.matchMedia("(max-width: 600px)").matches) {
+            $('#dataArrivo').attr("readonly", "true");
+        }
 
         //Animazioni di entrata                             
         function jsfunction() {
@@ -752,7 +769,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $('.btn-arrow').css("transform", "");
                 $('.btn-roomInfo-Text').text("Visualizza offerte");
                 $(".room-card").addClass("room-padding");
-                $('.card-selection').hide();           
+                $('.card-selection').hide();
             }
             const roomCard = $(this).parents(".room-card");
             const CardSelection = $(this).parents(".room-card").next('.card-selection');
@@ -765,7 +782,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $(this).find('.btn-arrow').css("transform", "");
                 $(this).find('.btn-roomInfo-Text').text("Visualizza offerte");
             }
-            if ($(".room-padding").length==2) {
+            if ($(".room-padding").length == 2) {
                 if (flag) {
                     if ($(this).find('.btn-roomInfo-Text').text() == "Visualizza offerte") {
                         $('.card-selection').addClass("selection-hide");
@@ -831,7 +848,10 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 if (!controller.includes(controllId)) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
-                    $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p class='roomName'>" + roomName + "</p>" + "<p class='offerName'>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
+                    // $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p class='roomName'>" + roomName + "</p>" + "<p class='offerName'>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
+                    var aTable = document.createElement("table");
+                    $(aTable).append("<td class='offerNumber'>" + offerNumber + "</td><td class='roomName'>" + roomName + "</td><td class='offerName'>" + offerName + "</td><td>Totale " + offerPrice + "</td><td class='delete-sel'><i class='fas fa-times'></i></td>");
+                    $(aDiv).append(aTable);
                     $('.dpAppend').append(aDiv);
                     controller.push(controllId);
                 } else {

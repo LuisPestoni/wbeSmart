@@ -474,6 +474,50 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     margin-left: 0;
 }
 
+#divPrenota table{
+    width: 98%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#divPrenota #dpdAppend table{
+    border-bottom: 3px solid white;
+    margin-bottom: 15px;
+}
+
+#divPrenota td{
+    text-align: left;
+}
+
+#divPrenota td:first-child{
+    width: 30px;
+}
+
+#divPrenota td:nth-child(2){
+    width: 180px;
+}
+
+#divPrenota td:nth-child(3){
+    width: 400px;
+}
+
+#divPrenota td:nth-child(4){
+    width: 180px;
+}
+
+#divPrenota td:nth-child(5){
+    display: none;
+    text-align: right;
+}
+
+#divPrenota #dpdAppend td:nth-child(5){
+    display: table-cell;
+}
+
+.dpgAppend{
+    cursor: pointer;
+}
+
 #dpdAppend p, #dpmAppend p {
     padding-right: 2vw;
 }
@@ -957,6 +1001,14 @@ div#offerta_scroll input::placeholder {
     .modal-backdrop {
         opacity: 1 !important;
         background-color: black;
+    }
+
+    .table-condensed{
+        width: 96vw;
+    }
+
+    .dropdown-menu{
+        left: 1vw !important;
     }
 }
 
