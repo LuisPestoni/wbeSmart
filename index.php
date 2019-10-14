@@ -60,7 +60,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     <div class="col-auto">
                                         <div class="input-group inputIcon">
                                             <div data-toggle="tooltip-dataArrivo" data-placement="top" title="" data-original-title="dd-mm-aaaa" class="input-group-prepend dp-size" id="divArrivo">
-                                                <input class="form-control form-style" id="dataArrivo" name="dataArrivo" placeholder="Data Arrivo" type="text" autocomplete="off" data-date-start-date="0d">
+                                                <input class="form-control form-style datepicker-form" id="dataArrivo" name="dataArrivo" placeholder="Data Arrivo" type="text" autocomplete="off" data-date-start-date="0d">
                                                 <i class="form-control-feedback fa fa-calendar-alt dp-i" id="arrivoIcon"></i>
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     <div class="col-auto">
                                         <div class="input-group inputIcon">
                                             <div data-toggle="tooltip-dataRitorno" data-placement="top" title="" data-original-title="" class="input-group-prepend input-spacing dp-size" id="divRitorno">
-                                                <input class="red-tooltip form-control form-style" id="dataRitorno" name="dataRitorno" placeholder="Data Partenza" type="text" autocomplete="off" data-date-start-date="0d" readonly disabled>
+                                                <input class="red-tooltip form-control form-style datepicker-form" id="dataRitorno" name="dataRitorno" placeholder="Data Partenza" type="text" autocomplete="off" data-date-start-date="0d" readonly disabled>
                                                 <i class="fa fa-calendar dp-i" id="ritornoIcon"></i>
                                             </div>
                                         </div>
@@ -118,7 +118,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="col-md-auto col-5">
                             <div class="input-group inputIcon">
                                 <div class="input-group-prepend">
-                                    <input class="form-control form-style" id="dataArrivo2" name="dataArrivo" value="<?php echo $dataArrivo; ?>" type="text" autocomplete="off" data-date-start-date="0d">
+                                    <input class="form-control form-style datepicker-form" id="dataArrivo2" name="dataArrivo" value="<?php echo $dataArrivo; ?>" type="text" autocomplete="off" data-date-start-date="0d">
                                     <i class="form-control-feedback fa fa-calendar-alt"></i>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="col-md-auto col-5">
                             <div class="input-group inputIcon">
                                 <div class="input-group-prepend">
-                                    <input class="form-control form-style" id="dataRitorno2" name="dataRitorno" value="<?php echo $dataRitorno; ?>" type="text" autocomplete="off" data-date-start-date="0d">
+                                    <input class="form-control form-style datepicker-form" id="dataRitorno2" name="dataRitorno" value="<?php echo $dataRitorno; ?>" type="text" autocomplete="off" data-date-start-date="0d">
                                     <i class="form-control-feedback fa fa-calendar-alt"></i>
                                 </div>
                             </div>
@@ -385,11 +385,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <h6 class="card-subtitle mb-2 text-muted click-room" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
                         <div class="box row">
                             <div id="carousel2" class="carousel slide col-12 col-sm-6" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li data-target="#carousel2" data-slide-to="0" class="active"></li>
-                                    <li data-target="#carousel2" data-slide-to="1"></li>
-                                    <li data-target="#carousel2" data-slide-to="2"></li>
-                                </ol>
                                 <div class="carousel-inner modal-toggle" data-toggle="modal" data-target="#myModal">
                                     <a class="carousel-control-prev carousel-zoom">
                                         <span aria-hidden="true"><i class="fas fa-search-plus"></i></span>
@@ -554,47 +549,47 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 <div class="row">
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="name" name="name" placeholder="Nome" required>
+                            <input class="form-control form-style" id="name" name="name" placeholder="Nome" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="lastName" name="lastName" placeholder="Cognome" required>
+                            <input class="form-control form-style" id="lastName" name="lastName" placeholder="Cognome" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="email" name="email" placeholder="Email" required>
+                            <input class="form-control form-style" id="email" name="email" placeholder="Email" type="email" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="phone" name="phone" placeholder="Telefono" required>
+                            <input class="form-control form-style" id="phone" name="phone" placeholder="Telefono" type="tel" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="adress" name="adress" placeholder="Indirizzo" required>
+                            <input class="form-control form-style" id="adress" name="adress" placeholder="Indirizzo" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="city" name="city" placeholder="Città" required>
+                            <input class="form-control form-style" id="city" name="city" placeholder="Città" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="country" name="country" placeholder="Nazione" required>
+                            <input class="form-control form-style" id="country" name="country" placeholder="Nazione" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="region" name="region" placeholder="Provincia" required>
+                            <input class="form-control form-style" id="region" name="region" placeholder="Provincia" type="text" required>
                         </div>
                     </div>
                     <div class="col-12 offer-input-div">
                         <div class="input-group">
-                            <input class="form-control form-style" id="cap" name="cap" placeholder="CAP" required>
+                            <input class="form-control form-style" id="cap" name="cap" placeholder="CAP" type="number" required>
                         </div>
                     </div>
                 </div>
@@ -636,7 +631,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         </div>
                     </div>
                     <div class="col-12 btn-confirm-div">
-                        <button class="confirm-btn">CONFERMA PRENOTAZIONE</button>
+                        <button class="confirm-btn" type="submit">CONFERMA PRENOTAZIONE</button>
                     </div>
                 </div>
             </div>
@@ -699,7 +694,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
         //creare una classe solo per i datepicker per selezionarli tutti e renderli readonly su telefono
         if (window.matchMedia("(max-width: 600px)").matches) {
-            $('#dataArrivo').attr("readonly", "true");
+            $('.datepicker-form').attr("readonly", "true");
         }
 
         //Animazioni di entrata                             
@@ -764,45 +759,53 @@ if ($dataArrivo != null && $dataRitorno != null) {
         flag = false;
 
         $('.btn-roomInfo').click(function() {
+            const roomCard = $(this).parents(".room-card");
+            const cardSelection = $(this).parents(".room-card").next('.card-selection');
+            const nearestCS = $(this).closest(".card-selection");
+            const nearestRC = $(this).closest(".room-card");
+            const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
+            const roomOffer2 = $(this).parents(".room-card").next('.card-selection').find('.room-offer2')[0].value;
+
             if ($('.card-selection').is(":visible")) {
                 $('.card-selection').addClass("selection-hide");
                 $('.btn-arrow').css("transform", "");
                 $('.btn-roomInfo-Text').text("Visualizza offerte");
                 $(".room-card").addClass("room-padding");
-                $('.card-selection').hide();
             }
-            const roomCard = $(this).parents(".room-card");
-            const CardSelection = $(this).parents(".room-card").next('.card-selection');
-            const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
-            const roomOffer2 = $(this).parents(".room-card").next('.card-selection').find('.room-offer2')[0].value;
+
             if ($(this).find('.btn-arrow').css("transform") == 'none') {
                 $(this).find('.btn-arrow').css("transform", "rotate(180deg)");
                 $(this).find('.btn-roomInfo-Text').text("Nascondi offerte");
+                $('.card-selection').not(nearestCS).hide();
+                $('.room-card').not(nearestRC).addClass("room-padding");
             } else {
                 $(this).find('.btn-arrow').css("transform", "");
                 $(this).find('.btn-roomInfo-Text').text("Visualizza offerte");
             }
-            if ($(".room-padding").length == 2) {
+            if ($(".room-padding").length > 1) {
                 if (flag) {
                     if ($(this).find('.btn-roomInfo-Text').text() == "Visualizza offerte") {
                         $('.card-selection').addClass("selection-hide");
+                        setTimeout(function() {
+                            $('.card-selection').hide();
+                        }, 500)
                     } else {
-                        CardSelection.removeClass("selection-hide");
+                        cardSelection.removeClass("selection-hide");
                         roomCard.removeClass("room-padding");
                         flag = true;
-                        CardSelection.show();
+                        cardSelection.show();
                     }
                 } else {
-                    CardSelection.removeClass("selection-hide");
+                    cardSelection.removeClass("selection-hide");
                     roomCard.removeClass("room-padding");
                     flag = true;
-                    CardSelection.show();
+                    cardSelection.show();
                 }
             } else {
-                CardSelection.addClass("selection-hide");
+                cardSelection.addClass("selection-hide");
                 flag = false;
                 setTimeout(function() {
-                    CardSelection.hide();
+                    cardSelection.hide();
                     roomCard.addClass("room-padding");
                     if (roomOffer1 > 0 || roomOffer2 > 0) {
                         roomCard.addClass("room-selected");

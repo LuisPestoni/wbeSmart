@@ -16,7 +16,7 @@
 html,
 body {
     width: 100%;
-    height: 100%; 
+    height: 100%;
     font-family: 'Archivo', sans-serif;
     font-family: var(--main-font);
     overflow-y: hidden;
@@ -104,7 +104,7 @@ div.down .inputIcon i {
 }
 
 
-.form-style{
+.form-style {
     background-color: rgba(255, 255, 255, .5);
     background-color: var(--input-bright-color);
     border: 2px solid;
@@ -316,7 +316,7 @@ h5.testo-card {
     color: var(--correct-color) !important;
 }
 
-.second-form{
+.second-form {
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px
@@ -396,7 +396,9 @@ h5.testo-card {
     justify-content: center;
 }
 
-.btn-arrow, .appendIcon, #divPrenotaDetails {
+.btn-arrow,
+.appendIcon,
+#divPrenotaDetails {
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
@@ -430,7 +432,7 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     color: var(--main-secondary-color);
 }
 
-.modal-toggle{
+.modal-toggle {
     border-radius: 5px;
 }
 
@@ -453,7 +455,7 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     background-color: var(--input-dark-color);
 }
 
-#divPrenota .main-content{
+#divPrenota .main-content {
     padding: 15px 0px 15px 15px;
 }
 
@@ -470,55 +472,58 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     z-index: 100;
 }
 
-.dpAppendDiv, .dpgAppend {
+.dpAppendDiv,
+.dpgAppend {
     margin-left: 0;
 }
 
-#divPrenota table{
-    width: 98%;
+#divPrenota table {
+    width: 40%;
     border-collapse: collapse;
     table-layout: fixed;
 }
 
-#divPrenota #dpdAppend table{
+#divPrenota #dpdAppend table {
+    width: 98%;
     border-bottom: 3px solid white;
     margin-bottom: 15px;
 }
 
-#divPrenota td{
+#divPrenota td {
     text-align: left;
 }
 
-#divPrenota td:first-child{
+#divPrenota td:first-child {
     width: 30px;
 }
 
-#divPrenota td:nth-child(2){
+#divPrenota td:nth-child(2) {
     width: 180px;
 }
 
-#divPrenota td:nth-child(3){
+#divPrenota td:nth-child(3) {
     width: 400px;
 }
 
-#divPrenota td:nth-child(4){
+#divPrenota td:nth-child(4) {
     width: 180px;
 }
 
-#divPrenota td:nth-child(5){
+#divPrenota td:nth-child(5) {
     display: none;
     text-align: right;
 }
 
-#divPrenota #dpdAppend td:nth-child(5){
+#divPrenota #dpdAppend td:nth-child(5) {
     display: table-cell;
 }
 
-.dpgAppend{
+.dpgAppend {
     cursor: pointer;
 }
 
-#dpdAppend p, #dpmAppend p {
+#dpdAppend p,
+#dpmAppend p {
     padding-right: 2vw;
 }
 
@@ -1003,13 +1008,19 @@ div#offerta_scroll input::placeholder {
         background-color: black;
     }
 
-    .table-condensed{
+    .table-condensed {
         width: 96vw;
     }
 
-    .dropdown-menu{
+    .dropdown-menu {
         left: 1vw !important;
     }
+
+    .datepicker table tr {
+        height: 66px;
+    }
+
+
 }
 
 /* ------------------------------------------------------------REGOLE SPECIFICHE PER BROWSER------------------------------------ */
@@ -1031,6 +1042,14 @@ div#offerta_scroll input::placeholder {
 
     .child-spacing {
         top: 2px !important;
+    }
+
+    select {
+        -moz-appearance: none;
+        margin-right: 15px;
+        background: url(data:image/gif;base64,R0lGODlhCwALAJEAAAAAAP///xUVFf///yH5BAEAAAMALAAAAAALAAsAAAIPnI+py+0/hJzz0IruwjsVADs=);
+        background-repeat: no-repeat;
+        background-position: 95% 42%;
     }
 
     @media (max-width: 600px) {
