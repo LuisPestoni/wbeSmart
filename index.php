@@ -817,6 +817,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }
         })
 
+        //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
         var controller = [];
         $('.select-offer').on('change', function() {
             var controllId = (this).id;
@@ -851,7 +852,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 if (!controller.includes(controllId)) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
-                    // $(aDiv).append("<p class='offerNumber'>" + offerNumber + "</p>" + "<p class='roomName'>" + roomName + "</p>" + "<p class='offerName'>" + offerName + "</p>" + "<p>Totale " + offerPrice + "</p>");
                     var aTable = document.createElement("table");
                     $(aTable).append("<td class='offerNumber'>" + offerNumber + "</td><td class='roomName'>" + roomName + "</td><td class='offerName'>" + offerName + "</td><td>Totale " + offerPrice + "</td><td class='delete-sel'><i class='fas fa-times'></i></td>");
                     $(aDiv).append(aTable);
@@ -870,6 +870,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     controller = arrayRemove(controller, controllId);
                 }
             }
+
+            //Funzione chiusura automatica Card Offer
             roomCard.addClass("room-padding");
             cardSelection.addClass("selection-hide");
             setTimeout(function() {
@@ -881,7 +883,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 cardSelection.hide();
                 flag = false;
             }, 600);
-
         });
 
         //Funzione che attiva i dettagli delle stanze selezionate sulla barra prenota per desktop
@@ -945,7 +946,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }
         }
 
-        // Funzione che fa' in modo che la barra dettagli ti segua
+        // Funzione che rende la barra sticky
         $(".down").scroll(function() {
             var height = $(".down").scrollTop();
             if (height > 100) {
@@ -954,7 +955,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $("#divPrenota").removeClass("sticky");
             }
         })
-
 
         //codice che mostra dettagli mobile
         $(".show-mobile-details").click(function() {
@@ -974,6 +974,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }
         });
 
+        //Funzione che riporta i dati delle offerte selezionate dall'utente alla terza sezione
         $('.btn-scroll').click(function() {
             if ($(".dpAppendDiv").length > 1) {
                 $('.final-img').attr("src", "");
@@ -1026,6 +1027,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }, 500);
         })
 
+        //Funzionamente pulsante "Rimuovi la tua scelta"
         $('.delete-selection').click(function() {
             $("#mobile-bar").removeClass("fadeInUp");
             $("#mobile-bar").addClass("fadeOutDown");
@@ -1246,7 +1248,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 const dataSuccessiva = dd + '/' + mm + '/' + y;
                 return dataSuccessiva;
             }
-
         })
 
         function toolTipErrore() {
@@ -1283,7 +1284,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
         }
 
         function msieversion() {
-
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
 
@@ -1294,7 +1294,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
             {
                 return false;
             }
-
             return false;
         }
     </script>
