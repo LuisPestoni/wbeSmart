@@ -665,6 +665,10 @@ div#offerta_scroll input::placeholder {
     opacity: 0.5;
 }
 
+.delete-sel{
+    cursor: pointer;
+}
+
 .offer-input-div {
     margin-top: 2.5vh;
     margin-bottom: 1vh;

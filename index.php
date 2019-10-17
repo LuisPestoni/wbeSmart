@@ -361,7 +361,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
                                     <i class="fa fa-male"></i>
-                                    <select class="form-control form-style select-offer room-offer2" id="nRoom1Offer2" name="nRoom1Offer2">
+                                    <select class="form-control form-style select-offer room-offer2" id="nRoom2Offer2" name="nRoom2Offer2">
                                         <?php
                                         for ($i = 0; $i <= 5; $i++) {
                                             echo '<option>' . $i . '</option>';
@@ -540,7 +540,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 </div>
                 <div class="offer-details">
                     <p>TOTALE</p>
-                    <p>877,50€</p>
+                    <p id="finalPrice"></p>
                 </div>
                 <p style="text-align:right;"><a class="scroll a-scroll" href="#rooms-view">Cambia Prenotazione</a></p>
             </div>
@@ -647,6 +647,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
+    <script type="text/javascript" src="./Js/basket_data.js"></script>
 
     <!-- <script>
         const USERNAME = "Luis API";
@@ -754,6 +755,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         //codice card selezione offerta camera
         $(".card-selection").hide();
         $("#divPrenota").hide();
+        $("#divPrenotaDetails").hide();
         $('#mobile-bar').hide();
         $('#mobile-bar-details').hide();
         flag = false;
@@ -818,59 +820,143 @@ if ($dataArrivo != null && $dataRitorno != null) {
         })
 
         //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
-        var controller = [];
+        // var controller = [];
+        // var basketList = [];
+        // $('.select-offer').on('change', function() {
+        //     var controllId = (this).id;
+        //     var offerNumber = $(this).val();
+        //     var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
+        //     var offerPrice2 = parseInt(offerPrice, 10);
+        //     var offerName = $(this).parents(".card-body").find(".offer-subtitle").html();
+        //     var roomName = $(this).parents(".card-selection").prev(".room-card").find(".room-title").html();
+        //     var aClassName = "a" + controllId;
+
+        //     let basket = new Basket_Data(offerNumber, roomName, offerName, offerPrice2, true);
+        //     basketList.push(basket);
+        //     console.log(basketList[0].isActive);
+        //     basketList[0].remove_data();
+        //     console.log(basketList[0].isActive);
+
+        //     const cardSelection = $(this).parents(".card-selection");
+        //     const roomCard = $(this).parents(".card-selection").prev('.room-card');
+
+        //     if (this.value > 0) {
+        //         roomCard.addClass("room-selected");
+        //         if (controller.length == 0) {
+        //             $("#dpmAppend").addClass("dpAppend");
+        //             $("#dpdAppend").removeClass("dpAppend");
+        //         } else {
+        //             $("#dpdAppend").addClass("dpAppend");
+        //             $("#dpmAppend").removeClass("dpAppend");
+        //             if (controller.length == 1) {
+        //                 if (!controller.includes(controllId) && !$('.dpgAppend').length) {
+        //                     $(".dpAppendDiv").appendTo(".dpAppend");
+        //                     var gDiv = document.createElement("div");
+        //                     $(gDiv).addClass("dpgAppend row");
+        //                     var selectedRoomcount = $(".dpAppend").length + 1;
+        //                     $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
+        //                     $("#dpmAppend").append(gDiv);
+        //                 }
+        //             }
+        //         }
+        //         if (!controller.includes(controllId)) {
+        //             var aDiv = document.createElement("div");
+        //             aDiv.classList.add(aClassName, "row", "dpAppendDiv");
+        //             var aTable = document.createElement("table");
+        //             $(aTable).append("<td class='offerNumber'>" + offerNumber + "</td><td class='roomName'>" + roomName + "</td><td class='offerName'>" + offerName + "</td><td>Totale " + offerPrice + "</td><td class='delete-sel'><i class='fas fa-times'></i></td>");
+        //             $(aDiv).append(aTable);
+        //             $('.dpAppend').append(aDiv);
+        //             controller.push(controllId);
+        //         } else {
+        //             $('.' + aClassName).find(".offerNumber").text(offerNumber);
+        //         }
+        //     } else {
+        //         if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
+        //             roomCard.removeClass("room-selected");
+        //         }
+
+        //         if (controller.includes(controllId)) {
+        //             $('.' + aClassName).remove();
+        //             controller = arrayRemove(controller, controllId);
+        //         }
+        //     }
+
+        //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
+        var basketList = [];
+        var totale = 0;
         $('.select-offer').on('change', function() {
             var controllId = (this).id;
             var offerNumber = $(this).val();
             var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
+            var offerPrice2 = parseInt(offerPrice, 10);
             var offerName = $(this).parents(".card-body").find(".offer-subtitle").html();
             var roomName = $(this).parents(".card-selection").prev(".room-card").find(".room-title").html();
             var aClassName = "a" + controllId;
+
+            let basket = new Basket_Data(offerNumber, roomName, offerName, offerPrice2, true, controllId);
+
 
             const cardSelection = $(this).parents(".card-selection");
             const roomCard = $(this).parents(".card-selection").prev('.room-card');
 
             if (this.value > 0) {
                 roomCard.addClass("room-selected");
-                if (controller.length == 0) {
+                if (basketList.length == 0) {
                     $("#dpmAppend").addClass("dpAppend");
                     $("#dpdAppend").removeClass("dpAppend");
                 } else {
                     $("#dpdAppend").addClass("dpAppend");
                     $("#dpmAppend").removeClass("dpAppend");
-                    if (controller.length == 1) {
-                        if (!controller.includes(controllId) && !$('.dpgAppend').length) {
+                    if (basketList.length == 1) {
+                        if (!basketList.filter(function(e) {
+                                return e.id == basket.id;
+                            }).length > 0) {
                             $(".dpAppendDiv").appendTo(".dpAppend");
                             var gDiv = document.createElement("div");
                             $(gDiv).addClass("dpgAppend row");
                             var selectedRoomcount = $(".dpAppend").length + 1;
-                            $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
+                            $(gDiv).append("<p id='basket_sum'></p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
                             $("#dpmAppend").append(gDiv);
                         }
                     }
                 }
-                if (!controller.includes(controllId)) {
+                if (!basketList.filter(function(e) {
+                        return e.id == basket.id;
+                    }).length > 0) {
                     var aDiv = document.createElement("div");
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
                     var aTable = document.createElement("table");
-                    $(aTable).append("<td class='offerNumber'>" + offerNumber + "</td><td class='roomName'>" + roomName + "</td><td class='offerName'>" + offerName + "</td><td>Totale " + offerPrice + "</td><td class='delete-sel'><i class='fas fa-times'></i></td>");
+                    aTable.classList.add("tb-basket");
+                    $(aTable).append("<td class='offerNumber'>" + basket.basketNumber + "</td><td class='roomName'>" + basket.basketRoomName + "</td><td class='offerName'>" + basket.basketOffer + "</td><td class='offerSum'>Totale " + basket.price + "€</td><td><span class='delete-sel " + basket.id + "'><i class='fas fa-times'></i></span></td>");
                     $(aDiv).append(aTable);
                     $('.dpAppend').append(aDiv);
-                    controller.push(controllId);
+                    basketList.push(basket);
                 } else {
-                    $('.' + aClassName).find(".offerNumber").text(offerNumber);
+                    for (var i in basketList) {
+                        if (basketList[i].id == basket.id) {
+                            basketList[i].basketNumber = basket.basketNumber;
+                            basketList[i].price = basketList[i].basketNumber * basketList[i].basketPrice;
+                            break;
+                        }
+                    }
+                    $('.' + aClassName).find(".offerNumber").text(basket.basketNumber);
+                    $('.' + aClassName).find(".offerSum").text("Totale " + basket.price + "€");
+
                 }
             } else {
                 if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
                     roomCard.removeClass("room-selected");
                 }
-
-                if (controller.includes(controllId)) {
-                    $('.' + aClassName).remove();
-                    controller = arrayRemove(controller, controllId);
+                for (var i in basketList) {
+                    if (basketList[i].id == basket.id) {
+                        $('.' + aClassName).remove();
+                        basketList = arrayRemove(basketList, basketList[i]);
+                        break;
+                    }
                 }
             }
-
+            $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
+            
             //Funzione chiusura automatica Card Offer
             roomCard.addClass("room-padding");
             cardSelection.addClass("selection-hide");
@@ -885,10 +971,43 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }, 600);
         });
 
+        $(document).on('click', '.delete-sel', function() {
+            let del_id = $(this).attr('class').split(' ')[1];
+            $('#' + del_id).val('0');
+            for (var i in basketList) {
+                if (basketList[i].id == del_id) {
+                    $('.a' + del_id).remove();
+                    basketList = arrayRemove(basketList, basketList[i]);
+                    break;
+                }
+            }
+            $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
+
+            $(".room-selected").each(function(e) {
+                if ($(this).next(".card-selection").find(".room-offer1").val() == 0 && $(this).next(".card-selection").find(".room-offer2").val() == 0) {
+                    $(this).removeClass("room-selected");
+                }
+            })
+
+            if (basketList.length == 0) {
+                $("#mobile-bar").removeClass("fadeInUp");
+                $("#mobile-bar").addClass("fadeOutDown");
+                $("#divPrenota").removeClass("fadeInDown");
+                $("#divPrenota").addClass("fadeOutUp");
+                setTimeout(function() {
+                    $("#divPrenota").hide();
+                    $("#divPrenotaDetails").hide();
+                    $('#dpmAppend').empty();
+                    $('#dpdAppend').empty();
+                    $('#mobile-bar-details').hide();
+                    $('#mobile-bar').hide();
+                }, 500);
+            }
+        });
+
         //Funzione che attiva i dettagli delle stanze selezionate sulla barra prenota per desktop
         $('#divPrenotaDetails').hide();
         $("#dpmAppend").click(function() {
-            console.log(this);
             if ($(this).find(".dpgAppend").length) {
                 if (!$("#divPrenotaDetails").is(":visible")) {
                     $("#divPrenotaDetails").show();
@@ -935,6 +1054,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         $("#divPrenota").hide();
                         $('#dpmAppend').empty();
                         $('#dpdAppend').empty();
+                        $("#divPrenotaDetails").hide();
                     }, 500);
                 } else {
                     $("#mobile-bar").removeClass("fadeInUp");
@@ -975,38 +1095,61 @@ if ($dataArrivo != null && $dataRitorno != null) {
         });
 
         //Funzione che riporta i dati delle offerte selezionate dall'utente alla terza sezione
+        // $('.btn-scroll').click(function() {
+        //     if ($(".dpAppendDiv").length > 1) {
+        //         $('.final-img').attr("src", "");
+        //         var finalRoomNames = [];
+        //         var finalOfferName = [];
+        //         $(".dpAppendDiv").each(function() {
+        //             finalRoomNames.push($(document.createElement('h4')));
+        //             finalOfferName.push($(document.createElement('p')));
+        //         });
+        //         var RoomNameTexts = [];
+        //         $(".roomName").each(function() {
+        //             RoomNameTexts.push($(this).text());
+        //         });
+        //         var OfferNameTexts = [];
+        //         $(".offerName").each(function() {
+        //             OfferNameTexts.push($(this).text());
+        //         });
+        //         for (i = 0; i < finalRoomNames.length; i++) {
+        //             $(finalRoomNames[i]).text(RoomNameTexts[i]);
+        //             $(finalOfferName[i]).text(OfferNameTexts[i]);
+        //             $(".room-title-append").append(finalRoomNames[i], finalOfferName[i]);
+        //         }
+        //     } else {
+        //         $('.final-img').attr("src", "./Img/camera22.jpeg");
+        //         var RoomNameText = $('.roomName').text();
+        //         var OfferNameText = $('.offerName').text();
+        //         var finalRoomName = $(document.createElement('h4'));
+        //         var finalOfferName = $(document.createElement('p'));
+        //         $(finalRoomName).text(RoomNameText);
+        //         $(finalOfferName).text(OfferNameText);
+        //         $(".room-title-append").append(finalRoomName, finalOfferName);
+        //     }
+        //     $('#mobile-bar-details').hide();
+        //     $('#mobile-bar').hide();
+        //     $('#divPrenota').hide();
+        // })
         $('.btn-scroll').click(function() {
-            if ($(".dpAppendDiv").length > 1) {
+            if (basketList.length > 1) {
                 $('.final-img').attr("src", "");
-                var finalRoomNames = [];
-                var finalOfferName = [];
-                $(".dpAppendDiv").each(function() {
-                    finalRoomNames.push($(document.createElement('h4')));
-                    finalOfferName.push($(document.createElement('p')));
-                });
-                var RoomNameTexts = [];
-                $(".roomName").each(function() {
-                    RoomNameTexts.push($(this).text());
-                });
-                var OfferNameTexts = [];
-                $(".offerName").each(function() {
-                    OfferNameTexts.push($(this).text());
-                });
-                for (i = 0; i < finalRoomNames.length; i++) {
-                    $(finalRoomNames[i]).text(RoomNameTexts[i]);
-                    $(finalOfferName[i]).text(OfferNameTexts[i]);
-                    $(".room-title-append").append(finalRoomNames[i], finalOfferName[i]);
+                for (var i in basketList) {
+                    let h4 = $(document.createElement('h4'));
+                    let p = $(document.createElement('p'));
+                    $(h4).text(basketList[i].basketNumber + " - " + basketList[i].basketRoomName);
+                    $(p).text(basketList[i].basketOffer);
+                    $(".room-title-append").append(h4, p);
                 }
             } else {
                 $('.final-img').attr("src", "./Img/camera22.jpeg");
-                var RoomNameText = $('.roomName').text();
-                var OfferNameText = $('.offerName').text();
-                var finalRoomName = $(document.createElement('h4'));
-                var finalOfferName = $(document.createElement('p'));
-                $(finalRoomName).text(RoomNameText);
-                $(finalOfferName).text(OfferNameText);
-                $(".room-title-append").append(finalRoomName, finalOfferName);
+                let h4 = $(document.createElement('h4'));
+                let p = $(document.createElement('p'));
+                $(h4).text(basketList[0].basketNumber + " " + basketList[0].basketRoomName);
+                $(p).text(basketList[0].basketOffer);
+                $(".room-title-append").append(h4, p);
             }
+            $("#finalPrice").text(updateBasket()+ "€");
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
             $('#divPrenota').hide();
@@ -1035,12 +1178,13 @@ if ($dataArrivo != null && $dataRitorno != null) {
             $("#divPrenota").addClass("fadeOutUp");
             setTimeout(function() {
                 $("#divPrenota").hide();
+                $("#divPrenotaDetails").hide();
                 $('#dpmAppend').empty();
                 $('#dpdAppend').empty();
                 $('#mobile-bar-details').hide();
                 $('#mobile-bar').hide();
             }, 500);
-            controller = [];
+            basketList = [];
             $('.room-offer1').each(function(i, obj) {
                 $('.room-offer1')[i].value = 0;
                 $('.room-offer2')[i].value = 0;
@@ -1281,6 +1425,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 return ele != value;
             });
 
+        }
+
+        function updateBasket() {
+            let totale = 0;
+            for (var i = 0; i < basketList.length; i++) {
+                totale += basketList[i].price;
+            }
+            return totale;
         }
 
         function msieversion() {
