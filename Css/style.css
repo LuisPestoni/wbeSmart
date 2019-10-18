@@ -1093,7 +1093,6 @@ div#offerta_scroll input::placeholder {
     div.down .form-style {
         background-color: #282451 !important;
     }
-
 }
 
 /* INTERNET EXPLORER */
@@ -1126,10 +1125,14 @@ div#offerta_scroll input::placeholder {
     .scroll-exp,
     .scroll-exp:hover {
         font-weight: bold;
-        margin-left: -10vw;
+        margin-left: 15px;
         background-color: #28A745;
         border-radius: 5px;
         padding: 5px 20px;
+    }
+
+    .final-img{
+        width: 0px !important;
     }
 
     .ie-show {

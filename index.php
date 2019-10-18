@@ -744,6 +744,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
             //Codice per Internet Explorer
             if (msieversion) {
+                $("#BambiniDiv").removeClass("animated");
                 $("#BambiniDiv").addClass("ie-show");
                 $("#close-child-icon").click(function() {
                     $("#BambiniDiv").addClass("ie-hide");
@@ -902,11 +903,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
             if (this.value > 0) {
                 roomCard.addClass("room-selected");
                 if (basketList.length == 0) {
-                    $("#dpmAppend").addClass("dpAppend");
+                    $("#dpmAppend").addClass("dpAppend animated fadeInLeft");
                     $("#dpdAppend").removeClass("dpAppend");
                 } else {
                     $("#dpdAppend").addClass("dpAppend");
-                    $("#dpmAppend").removeClass("dpAppend");
+                    $("#dpmAppend").removeClass("dpAppend animated fadeInLeft");
                     if (basketList.length == 1) {
                         if (!basketList.filter(function(e) {
                                 return e.id == basket.id;
@@ -981,8 +982,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     break;
                 }
             }
-            $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
 
+            $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
             $(".room-selected").each(function(e) {
                 if ($(this).next(".card-selection").find(".room-offer1").val() == 0 && $(this).next(".card-selection").find(".room-offer2").val() == 0) {
                     $(this).removeClass("room-selected");
