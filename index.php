@@ -277,7 +277,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         </div>
                         <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
                         <div class="box row">
-                            <div id="carousel1" class="carousel slide col-8 col-sm-6" data-ride="carousel">
+                            <div id="carousel1" class="carousel slide col-12 col-sm-6" data-ride="carousel">
                                 <div class="carousel-inner modal-toggle" data-toggle="modal" data-target="#myModal">
                                     <a class="carousel-control-prev carousel-zoom">
                                         <span aria-hidden="true"><i class="fas fa-search-plus"></i></span>
@@ -302,7 +302,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                 </a>
                             </div>
                             <!-- <img src="./Img/camera1.jpeg" class="card-img img-resize"> -->
-                            <div class="col-4 col-sm-6">
+                            <div class="col-12 col-sm-6">
                                 <p class="card-text text-prova">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             </div>
                             <div class="click-room col-12 col-sm-12">
@@ -680,6 +680,34 @@ if ($dataArrivo != null && $dataRitorno != null) {
         }
         apiLaunch();
     </script> -->
+    <script>
+        var userSearch = {
+            dataArrivo: "dArrivo",
+            dataRitorno: "dRitorno",
+            numeroAdulti: "nAdulti",
+            numeroBambini: "nBambini",
+            etaBambini: "eBambini", //array,
+            numeroCamere: "nCamere"
+        }
+        apiLaunch();
+
+        function apiLaunch(){
+            $.ajax
+            ({
+                url: 'https://script.google.com/macros/s/AKfycbwyRMe5itYGQllEs1YTNImH7lAbLra1KzadHE-i8HEOVuO56hE/exec',
+                type: 'GET',
+                data: {"test": "test"},  
+                dataType: "json",
+                success: function(data) 
+                {
+                    console.log(data);
+                },
+                error: function(data){
+                    console.log("errore!");
+                }
+            });
+        }
+    </script>
 
     <script>
         //Inizializzazione elementi

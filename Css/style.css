@@ -1012,6 +1012,10 @@ div#offerta_scroll input::placeholder {
         background-color: black;
     }
 
+    .text-prova{
+        padding-left: 0px;
+    }
+
     .table-condensed {
         width: 96vw;
     }
