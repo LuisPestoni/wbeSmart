@@ -219,7 +219,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         <div id="divPrenota" class="animated">
             <div class="row main-content">
                 <div id="dpmAppend" class="dpAppend col-9"></div>
-                <span class="delete-selection">Rimuovi la tua scelta</span>
+                <span class="delete-selection">Svuota il carrello</span>
                 <div id="divOffertaScroll" class="col-auto">
                     <button style="margin-right: 0">
                         <a class="scroll btn-scroll" href="#offerta_scroll">PRENOTA</a>
@@ -691,18 +691,18 @@ if ($dataArrivo != null && $dataRitorno != null) {
         }
         apiLaunch();
 
-        function apiLaunch(){
-            $.ajax
-            ({
+        function apiLaunch() {
+            $.ajax({
                 url: 'https://script.google.com/macros/s/AKfycbwyRMe5itYGQllEs1YTNImH7lAbLra1KzadHE-i8HEOVuO56hE/exec',
-                type: 'GET',
-                data: {"test": "test"},  
+                type: 'POST',
+                data: {
+                    "test": "test"
+                },
                 dataType: "json",
-                success: function(data) 
-                {
+                success: function(data) {
                     console.log(data);
                 },
-                error: function(data){
+                error: function(data) {
                     console.log("errore!");
                 }
             });
@@ -912,7 +912,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
         //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
         var basketList = [];
-        var totale = 0;
         $('.select-offer').on('change', function() {
             var controllId = (this).id;
             var offerNumber = $(this).val();
@@ -922,8 +921,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             var roomName = $(this).parents(".card-selection").prev(".room-card").find(".room-title").html();
             var aClassName = "a" + controllId;
 
-            let basket = new Basket_Data(offerNumber, roomName, offerName, offerPrice2, true, controllId);
-
+            let basket = new Basket_Data(offerNumber, roomName, offerName, offerPrice2, controllId);
 
             const cardSelection = $(this).parents(".card-selection");
             const roomCard = $(this).parents(".card-selection").prev('.room-card');
@@ -944,7 +942,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             var gDiv = document.createElement("div");
                             $(gDiv).addClass("dpgAppend row");
                             var selectedRoomcount = $(".dpAppend").length + 1;
-                            $(gDiv).append("<p id='basket_sum'></p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
+                            $(gDiv).append("<p id='basket_sum'></p><a><i style='vertical-align: middle;" +
+                                "' class='fas fa-chevron-down appendIcon'></i></a>");
                             $("#dpmAppend").append(gDiv);
                         }
                     }
@@ -956,7 +955,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     aDiv.classList.add(aClassName, "row", "dpAppendDiv");
                     var aTable = document.createElement("table");
                     aTable.classList.add("tb-basket");
-                    $(aTable).append("<td class='offerNumber'>" + basket.basketNumber + "</td><td class='roomName'>" + basket.basketRoomName + "</td><td class='offerName'>" + basket.basketOffer + "</td><td class='offerSum'>Totale " + basket.price + "€</td><td><span class='delete-sel " + basket.id + "'><i class='fas fa-times'></i></span></td>");
+                    $(aTable).append("<td class='offerNumber'>" + basket.basketNumber +
+                        "</td><td class='roomName'>" + basket.basketRoomName +
+                        "</td><td class='offerName'>" + basket.basketOffer +
+                        "</td><td class='offerSum'>Totale " + basket.price +
+                        "€</td><td><span class='delete-sel " + basket.id + "'><i class='fas fa-times'></i></span></td>");
                     $(aDiv).append(aTable);
                     $('.dpAppend').append(aDiv);
                     basketList.push(basket);
@@ -970,10 +973,10 @@ if ($dataArrivo != null && $dataRitorno != null) {
                     }
                     $('.' + aClassName).find(".offerNumber").text(basket.basketNumber);
                     $('.' + aClassName).find(".offerSum").text("Totale " + basket.price + "€");
-
                 }
             } else {
-                if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
+                if ($(this).parents(".card-selection").find(".select-offer").val() == 0 &&
+                    $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
                     roomCard.removeClass("room-selected");
                 }
                 for (var i in basketList) {
@@ -985,7 +988,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 }
             }
             $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
-            
+
             //Funzione chiusura automatica Card Offer
             roomCard.addClass("room-padding");
             cardSelection.addClass("selection-hide");
@@ -1000,6 +1003,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }, 600);
         });
 
+        //Eliminazione selezione offerta tramite pulsante "x"
         $(document).on('click', '.delete-sel', function() {
             let del_id = $(this).attr('class').split(' ')[1];
             $('#' + del_id).val('0');
@@ -1013,7 +1017,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
             $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
             $(".room-selected").each(function(e) {
-                if ($(this).next(".card-selection").find(".room-offer1").val() == 0 && $(this).next(".card-selection").find(".room-offer2").val() == 0) {
+                if ($(this).next(".card-selection").find(".room-offer1").val() == 0 &&
+                    $(this).next(".card-selection").find(".room-offer2").val() == 0) {
                     $(this).removeClass("room-selected");
                 }
             })
@@ -1178,7 +1183,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $(p).text(basketList[0].basketOffer);
                 $(".room-title-append").append(h4, p);
             }
-            $("#finalPrice").text(updateBasket()+ "€");
+            $("#finalPrice").text(updateBasket() + "€");
             $('#mobile-bar-details').hide();
             $('#mobile-bar').hide();
             $('#divPrenota').hide();
@@ -1199,7 +1204,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }, 500);
         })
 
-        //Funzionamente pulsante "Rimuovi la tua scelta"
+        //Funzionamente pulsante "Svuota il carrello"
         $('.delete-selection').click(function() {
             $("#mobile-bar").removeClass("fadeInUp");
             $("#mobile-bar").addClass("fadeOutDown");
@@ -1453,9 +1458,9 @@ if ($dataArrivo != null && $dataRitorno != null) {
             return arr.filter(function(ele) {
                 return ele != value;
             });
-
         }
 
+        //Funzione che restituisce il prezzo totale del conenuto presente nel carrello
         function updateBasket() {
             let totale = 0;
             for (var i = 0; i < basketList.length; i++) {
