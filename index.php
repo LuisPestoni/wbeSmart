@@ -708,7 +708,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
             });
         }
     </script>
-
     <script>
         //Inizializzazione elementi
         const dataArrivo = document.getElementById("dataArrivo");
@@ -721,7 +720,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         const input_bambino = document.querySelector('#numBambini');
         var cardSelection = document.getElementsByClassName('card-selection');
 
-        //creare una classe solo per i datepicker per selezionarli tutti e renderli readonly su telefono
+        //rende tutti i datepicker readonly se il sito è visualizzato da telefoni
         if (window.matchMedia("(max-width: 600px)").matches) {
             $('.datepicker-form').attr("readonly", "true");
         }
@@ -1168,19 +1167,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $('.btn-scroll').click(function() {
             if (basketList.length > 1) {
                 $('.final-img').attr("src", "");
-                for (var i in basketList) {
-                    let h4 = $(document.createElement('h4'));
-                    let p = $(document.createElement('p'));
-                    $(h4).text(basketList[i].basketNumber + " - " + basketList[i].basketRoomName);
-                    $(p).text(basketList[i].basketOffer);
-                    $(".room-title-append").append(h4, p);
-                }
             } else {
                 $('.final-img').attr("src", "./Img/camera22.jpeg");
+            }
+            for (var i in basketList) {
                 let h4 = $(document.createElement('h4'));
                 let p = $(document.createElement('p'));
-                $(h4).text(basketList[0].basketNumber + " " + basketList[0].basketRoomName);
-                $(p).text(basketList[0].basketOffer);
+                $(h4).text(basketList[i].basketNumber + " - " + basketList[i].basketRoomName);
+                $(p).text(basketList[i].basketOffer);
                 $(".room-title-append").append(h4, p);
             }
             $("#finalPrice").text(updateBasket() + "€");
@@ -1193,15 +1187,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
             if (window.matchMedia("(max-width: 767px)").matches) {
                 setTimeout(function() {
                     $('#mobile-bar').show();
+                    $(".room-title-append").empty();
                 }, 500);
             } else {
                 setTimeout(function() {
                     $('#divPrenota').show();
+                    $(".room-title-append").empty();
                 }, 500);
             }
-            setTimeout(function() {
-                $(".room-title-append").empty();
-            }, 500);
         })
 
         //Funzionamente pulsante "Svuota il carrello"

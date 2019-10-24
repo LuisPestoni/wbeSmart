@@ -483,12 +483,6 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
     table-layout: fixed;
 }
 
-#divPrenota #dpdAppend table {
-    width: 98%;
-    border-bottom: 3px solid white;
-    margin-bottom: 15px;
-}
-
 #divPrenota td {
     text-align: left;
 }
@@ -512,6 +506,12 @@ div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
 #divPrenota td:nth-child(5) {
     display: none;
     text-align: right;
+}
+
+#divPrenota #dpdAppend table {
+    width: 98%;
+    border-bottom: 3px solid white;
+    margin-bottom: 15px;
 }
 
 #divPrenota #dpdAppend td:nth-child(5) {
