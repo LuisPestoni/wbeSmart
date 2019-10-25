@@ -553,6 +553,10 @@ div#divPrenota button {
     color: white;
 }
 
+.a-scroll:hover {
+    opacity: 0.6;
+}
+
 @keyframes animationSelection {
     from {
         top: -235px;

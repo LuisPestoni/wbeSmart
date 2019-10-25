@@ -331,7 +331,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="row box" style="margin-top: 4vh;">
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
-                                    <i class="fa fa-male"></i>
+                                    <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer1" id="nRoom1Offer1" name="nRoom1Offer1">
                                         <?php
                                         for ($i = 0; $i <= 5; $i++) {
@@ -360,7 +360,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="row box" style="margin-top: 4vh;">
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
-                                    <i class="fa fa-male"></i>
+                                    <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer2" id="nRoom2Offer2" name="nRoom2Offer2">
                                         <?php
                                         for ($i = 0; $i <= 5; $i++) {
@@ -437,7 +437,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="row box" style="margin-top: 4vh;">
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
-                                    <i class="fa fa-male"></i>
+                                    <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer1" id="nRoom2Offer1" name="nRoom2Offer1">
                                         <?php
                                         for ($i = 0; $i <= 5; $i++) {
@@ -466,7 +466,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         <div class="row box" style="margin-top: 4vh;">
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
-                                    <i class="fa fa-male"></i>
+                                    <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer2" id="nRoom1Offer2" name="nRoom1Offer2">
                                         <?php
                                         for ($i = 0; $i <= 5; $i++) {
