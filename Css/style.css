@@ -425,8 +425,8 @@ h5.testo-card {
     margin-bottom: 10vh;
 }
 
-div.room-selected>div.card-body>div.box>h2>span.badge-prezzo,
-div.room-selected>div.card-body>div.box>div.click-room>span.btn-roomInfo {
+div.room-selected .badge-prezzo,
+div.room-selected .btn-roomInfo {
     background-color: white;
     color: rgba(19, 15, 64, 1);
     color: var(--main-secondary-color);
@@ -713,6 +713,40 @@ div#offerta_scroll input::placeholder {
     text-align: center;
     font-size: 150%;
     border-radius: 15px;
+}
+
+#mobile-append table {
+    width: 90%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+#mobile-append td {
+    text-align: left;
+}
+
+#mobile-append td:last-child {
+    text-align: right;
+}
+
+#mobile-append td:first-child {
+    width: 30px;
+    padding-left: 15px;
+}
+
+#mobile-append td:nth-child(2) {
+    width: 180px;
+}
+
+#mobile-append td:nth-child(3) {
+    width: 50px;
+}
+
+.mOffer{
+    width: 90%;
+    border-bottom: 3px solid white;
+    margin-bottom: 10px;
+    padding-left: 10px;
 }
 
 .delete-icon {
@@ -1032,6 +1066,9 @@ div#offerta_scroll input::placeholder {
         height: 66px;
     }
 
+    #mobile-price{
+        margin-bottom: 0px;
+    }
 
 }
 
