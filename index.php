@@ -268,14 +268,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
             </div>
         </div>
         <div class="container text-center camere">
-            <div class="row">
-                <div id="room1" class="card col-12 room-padding room-card img-resize" style="text-align: left;">
+            <div id="rooms_container" class="row">
+                <div id="room1" class="card col-12 room-padding room-card img-resize">
                     <div class="card-body">
                         <div class="box">
-                            <h4 class="card-title room-title" style="text-align: left;">Camera Doppia</h4>
+                            <h4 class="card-title room-title">Camera Doppia</h4>
                             <h2 class="card-title"><span class="badge badge-primary badge-prezzo">877,50€</span></h2>
                         </div>
-                        <h6 class="card-subtitle mb-2 text-muted" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Colazione inclusa - Parcheggio privato - Vista mare</h6>
                         <div class="box row">
                             <div id="carousel1" class="carousel slide col-12 col-sm-6" data-ride="carousel">
                                 <div class="carousel-inner modal-toggle" data-toggle="modal" data-target="#myModal">
@@ -301,22 +301,20 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <!-- <img src="./Img/camera1.jpeg" class="card-img img-resize"> -->
                             <div class="col-12 col-sm-6">
                                 <p class="card-text text-prova">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             </div>
                             <div class="click-room col-12 col-sm-12">
                                 <span class="btn-roomInfo badge badge-primary badge-prezzo">
-                                    <div style="">
-                                        <h6 class="btn-roomInfo-Text" style="vertical-align: middle;">Visualizza offerte</h6><i style="vertical-align: middle;" class="fas fa-chevron-down btn-arrow"></i>
+                                    <div>
+                                        <h6 class="btn-roomInfo-Text">Visualizza offerte</h6><i class="fas fa-chevron-down btn-arrow"></i>
                                     </div>
                                 </span>
                             </div>
-
                         </div>
                     </div>
                 </div>
-                <div id="cardSelection1" class="card col-12 card-selection animation-selection" style="text-align: left;">
+                <div id="cardSelection1" class="card col-12 card-selection animation-selection">
                     <div class="card-body card-selezione-body">
                         <h5 class="card-title"><span class="badge badge-success">IN OFFERTA</span></h5>
                         <div class="box">
@@ -376,13 +374,13 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         </div>
                     </div>
                 </div>
-                <div id="room2" class="card col-12 room-padding room-card img-resize" style="text-align: left;">
+                <div id="room2" class="card col-12 room-padding room-card img-resize">
                     <div class="card-body">
                         <div class="box click-room">
-                            <h4 class="card-title room-title" style="text-align: left;">Junior Suite</h4>
+                            <h4 class="card-title room-title">Junior Suite</h4>
                             <h2 class="card-title"><span class="badge badge-primary badge-prezzo">877,50€</span></h2>
                         </div>
-                        <h6 class="card-subtitle mb-2 text-muted click-room" style="text-align: left;">Colazione inclusa - Parcheggio privato - Vista mare</h6>
+                        <h6 class="card-subtitle mb-2 text-muted click-room">Colazione inclusa - Parcheggio privato - Vista mare</h6>
                         <div class="box row">
                             <div id="carousel2" class="carousel slide col-12 col-sm-6" data-ride="carousel">
                                 <div class="carousel-inner modal-toggle" data-toggle="modal" data-target="#myModal">
@@ -422,7 +420,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                         </div>
                     </div>
                 </div>
-                <div id="cardSelection2" class="card col-12 card-selection animation-selection" style="text-align: left;">
+                <div id="cardSelection2" class="card col-12 card-selection animation-selection">
                     <div class="card-body card-selezione-body">
                         <h5 class="card-title"><span class="badge badge-success">IN OFFERTA</span></h5>
                         <div class="box">
@@ -645,7 +643,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
-    <script type="text/javascript" src="./Js/basket_data.js"></script>
+    <script type="text/javascript" src="./Js/objects.js"></script>
 
     <!-- <script>
         const USERNAME = "Luis API";
@@ -688,23 +686,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
             numeroCamere: "nCamere"
         }
         apiLaunch();
-
-        function apiLaunch() {
-            $.ajax({
-                url: 'https://script.google.com/macros/s/AKfycbwyRMe5itYGQllEs1YTNImH7lAbLra1KzadHE-i8HEOVuO56hE/exec',
-                type: 'POST',
-                data: {
-                    "test": "test"
-                },
-                dataType: "json",
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(data) {
-                    console.log("errore!");
-                }
-            });
-        }
     </script>
     <script>
         //Inizializzazione elementi
@@ -998,7 +979,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             return e.id == basket.id;
                         }).length > 0) {
                         roomCard.addClass("room-selected");
-                        //$(mTitle).text(basket.basketNumber + " " + basket.basketRoomName);
                         $(mTitle).append("<td><h5 class='mobile-nOffer'>" + basket.basketNumber +
                             "</h5></td><td><h5>" + basket.basketRoomName +
                             "</h5></td><td><h5 class='mobile-nPrice'>" + basket.price + "€</h5></td>");
@@ -1157,7 +1137,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }
         })
 
-        //codice che mostra dettagli mobile
+        //codice che attiva i dettagli del carrello mobile
         $(".show-mobile-details").click(function() {
             if ($(this).css("transform") == 'none') {
                 $(this).css("transform", "rotate(180deg)");
@@ -1171,7 +1151,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 setTimeout(function() {
                     $('#mobile-bar-details').hide();
                 }, 500);
-
             }
         });
 

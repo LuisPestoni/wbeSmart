@@ -379,6 +379,10 @@ h5.testo-card {
     align-items: center;
 }
 
+.card-subtitle{
+    text-align: left;
+}
+
 .btn-roomInfo {
     margin-top: 1.5vh;
     width: 100%;
@@ -394,6 +398,10 @@ h5.testo-card {
     display: flex;
     text-align: center;
     justify-content: center;
+}
+
+.btn-roomInfo-Text, .btn-arrow{
+    vertical-align: middle;
 }
 
 .btn-arrow,
@@ -423,6 +431,7 @@ h5.testo-card {
     background-color: var(--main-secondary-color);
     color: white;
     margin-bottom: 10vh;
+    text-align: left;
 }
 
 div.room-selected .badge-prezzo,
