@@ -434,6 +434,10 @@ h5.testo-card {
     text-align: left;
 }
 
+.roomOfferPrice{
+    font-size: 30px;
+}
+
 div.room-selected .badge-prezzo,
 div.room-selected .btn-roomInfo {
     background-color: white;
@@ -862,6 +866,11 @@ div#offerta_scroll input::placeholder {
     font-size: 120%;
 }
 
+.h-100 {
+    width: 940px;
+    height: 650px;
+}
+
 /* ------------------------------------------------------------CHECKBOX CSS--------------------------------------------------- */
 .checkbox input[type="checkbox"] {
     opacity: 0;
@@ -969,10 +978,6 @@ div#offerta_scroll input::placeholder {
 
     #EmptyDiv {
         margin-left: 2vh;
-    }
-
-    .text-prova::after {
-        content: " Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
     }
 
     .selection-hide {

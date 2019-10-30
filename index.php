@@ -269,7 +269,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         </div>
         <div class="container text-center camere">
             <div id="rooms_container" class="row">
-                <div id="room1" class="card col-12 room-padding room-card img-resize">
+                <!-- <div id="room1" class="card col-12 room-padding room-card img-resize">
                     <div class="card-body">
                         <div class="box">
                             <h4 class="card-title room-title">Camera Doppia</h4>
@@ -330,11 +330,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
                                     <i class="fa fa-bed"></i>
-                                    <select class="form-control form-style select-offer room-offer1" id="nRoom1Offer1" name="nRoom1Offer1">
+                                    <select class="form-control form-style select-offer room-offer0" id="nRoom1Offer1" name="nRoom1Offer1">
                                         <?php
-                                        for ($i = 0; $i <= 5; $i++) {
-                                            echo '<option>' . $i . '</option>';
-                                        }
+                                        // for ($i = 0; $i <= 5; $i++) {
+                                        //     echo '<option>' . $i . '</option>';
+                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -359,11 +359,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
                                     <i class="fa fa-bed"></i>
-                                    <select class="form-control form-style select-offer room-offer2" id="nRoom2Offer2" name="nRoom2Offer2">
+                                    <select class="form-control form-style select-offer room-offer1" id="nRoom2Offer2" name="nRoom2Offer2">
                                         <?php
-                                        for ($i = 0; $i <= 5; $i++) {
-                                            echo '<option>' . $i . '</option>';
-                                        }
+                                        // for ($i = 0; $i <= 5; $i++) {
+                                        //     echo '<option>' . $i . '</option>';
+                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -406,7 +406,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <!-- <img src="./Img/camera1.jpeg" class="card-img img-resize"> -->
+                             <img src="./Img/camera1.jpeg" class="card-img img-resize"> 
                             <div class="col-12 col-sm-6 click-room">
                                 <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                             </div>
@@ -436,11 +436,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
                                     <i class="fa fa-bed"></i>
-                                    <select class="form-control form-style select-offer room-offer1" id="nRoom2Offer1" name="nRoom2Offer1">
+                                    <select class="form-control form-style select-offer room-offer0" id="nRoom2Offer1" name="nRoom2Offer1">
                                         <?php
-                                        for ($i = 0; $i <= 5; $i++) {
-                                            echo '<option>' . $i . '</option>';
-                                        }
+                                        // for ($i = 0; $i <= 5; $i++) {
+                                        //     echo '<option>' . $i . '</option>';
+                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -465,11 +465,11 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             <div class="col-4 col-md-auto">
                                 <div class="form-group inputIcon">
                                     <i class="fa fa-bed"></i>
-                                    <select class="form-control form-style select-offer room-offer2" id="nRoom1Offer2" name="nRoom1Offer2">
+                                    <select class="form-control form-style select-offer room-offer1" id="nRoom1Offer2" name="nRoom1Offer2">
                                         <?php
-                                        for ($i = 0; $i <= 5; $i++) {
-                                            echo '<option>' . $i . '</option>';
-                                        }
+                                        // for ($i = 0; $i <= 5; $i++) {
+                                        //     echo '<option>' . $i . '</option>';
+                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -479,7 +479,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div>
@@ -767,13 +767,15 @@ if ($dataArrivo != null && $dataRitorno != null) {
         $('#mobile-bar-details').hide();
         flag = false;
 
-        $('.btn-roomInfo').click(function() {
+        $(document).on('click', '.btn-roomInfo', function() {
+        // $('.btn-roomInfo').click(function() {
+            console.log(this);
             const roomCard = $(this).parents(".room-card");
             const cardSelection = $(this).parents(".room-card").next('.card-selection');
             const nearestCS = $(this).closest(".card-selection");
             const nearestRC = $(this).closest(".room-card");
-            const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
-            const roomOffer2 = $(this).parents(".room-card").next('.card-selection').find('.room-offer2')[0].value;
+            const roomOffer1 = $(this).parents(".room-card").next('.card-selection').find('.room-offer0')[0].value;
+            const roomOffer2 = $(this).parents(".room-card").next('.card-selection').find('.room-offer1')[0].value;
 
             if ($('.card-selection').is(":visible")) {
                 $('.card-selection').addClass("selection-hide");
@@ -890,7 +892,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
         //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
         var basketList = [];
-        $('.select-offer').on('change', function() {
+        $(document).on('change', '.select-offer', function() {
+        // $('.select-offer').on('change', function() {
             var controllId = (this).id;
             var offerNumber = $(this).val();
             var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
@@ -1040,8 +1043,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
 
             $('#basket_sum').text("Il totale delle camere selezionate è di " + updateBasket() + "€");
             $(".room-selected").each(function(e) {
-                if ($(this).next(".card-selection").find(".room-offer1").val() == 0 &&
-                    $(this).next(".card-selection").find(".room-offer2").val() == 0) {
+                if ($(this).next(".card-selection").find(".room-offer0").val() == 0 &&
+                    $(this).next(".card-selection").find(".room-offer1").val() == 0) {
                     $(this).removeClass("room-selected");
                 }
             })
@@ -1243,8 +1246,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
             }, 500);
             basketList = [];
             $('.room-offer1').each(function(i, obj) {
+                $('.room-offer0')[i].value = 0;
                 $('.room-offer1')[i].value = 0;
-                $('.room-offer2')[i].value = 0;
             });
             $('.room-card').removeClass("room-selected");
         })
@@ -1252,10 +1255,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
         //Codice gestione Carrosello all'interno della modale
         const modal_append = $('#modal-append');
 
-        $(".modal-toggle").click(function() {
+        $(document).on('click', '.modal-toggle', function() {
             $(modal_append).empty();
             var imgToAppend = $(this).children('.carousel-item');
             $(imgToAppend).clone().appendTo(modal_append);
+            if (window.matchMedia("(max-width: 600px)").matches){
+                let completeDescr = $(this).parents(".room-card").find(".hiddenDescr").text();
+                $(".modalText").text(completeDescr);
+            }
         });
 
         $(document).ready(function() {

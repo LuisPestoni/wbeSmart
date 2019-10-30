@@ -1,15 +1,16 @@
 [{
     "rooms": [{
         "room_id": "R101",
-        "room_type": "Camera singola",
+        "room_type": "Camera doppia",
         "free_rooms": 10,
         "price": {
             "price": 300,
             "currency": "EUR"
         },
+        "photos": ["https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/271614/pexels-photo-271614.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940", "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/271616/pexels-photo-271616.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],
         "tags": ["Colazione inclusa", "Parcheggio privato", "Vista mare"],
         "description_short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio.",
-        "description_complete": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio. Duis vel urna orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rhoncus vestibulum. Nulla quis vestibulum quam. Praesent dictum, urna quis imperdiet imperdiet, lacus leo gravida mauris, sit amet aliquam dolor quam eget turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed pellentesque, nulla quis convallis tempor, neque sapien consequat tellus, ac lobortis metus nisi vel purus. Pellentesque rhoncus eget sem sed sollicitudin. Sed mollis molestie nisl, at faucibus magna dapibus sed. Nunc id venenatis arcu.",
+        "description_complete": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio. Duis vel urna orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rhoncus vestibulum. Nulla quis vestibulum quam. Praesent dictum, urna quis imperdiet imperdiet, lacus leo gravida mauris, sit amet aliquam dolor quam eget turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed pellentesque, nulla quis convallis tempor, neque sapien consequat tellus, ac lobortis metus nisi vel purus.",
         "offers": [{
             "offer_id": "R101_1",
             "offer_name": "Offerta Prenotazione Diretta Camera e Colazione",
@@ -25,15 +26,16 @@
         }]
     }, {
         "room_id": "R102",
-        "room_type": "Camera doppia",
+        "room_type": "Junior Suite",
         "free_rooms": 3,
         "price": {
             "price": 500,
             "currency": "EUR"
         },
+        "photos": ["https://images.pexels.com/photos/2030119/pexels-photo-2030119.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/2030120/pexels-photo-2030120.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/2030117/pexels-photo-2030117.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/2030121/pexels-photo-2030121.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940","https://images.pexels.com/photos/2030112/pexels-photo-2030112.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"],
         "tags": ["Colazione inclusa", "Aria Condizionata", "Balcone"],
         "description_short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio.",
-        "description_complete": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio. Duis vel urna orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rhoncus vestibulum. Nulla quis vestibulum quam. Praesent dictum, urna quis imperdiet imperdiet, lacus leo gravida mauris, sit amet aliquam dolor quam eget turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed pellentesque, nulla quis convallis tempor, neque sapien consequat tellus, ac lobortis metus nisi vel purus. Pellentesque rhoncus eget sem sed sollicitudin. Sed mollis molestie nisl, at faucibus magna dapibus sed. Nunc id venenatis arcu.",
+        "description_complete": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio. Duis vel urna orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rhoncus vestibulum. Nulla quis vestibulum quam. Praesent dictum, urna quis imperdiet imperdiet, lacus leo gravida mauris, sit amet aliquam dolor quam eget turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed pellentesque, nulla quis convallis tempor, neque sapien consequat tellus, ac lobortis metus nisi vel purus.",
         "offers": [{
             "offer_id": "R102_01",
             "offer_name": "Colazione esclusa",
@@ -44,6 +46,31 @@
             "offer_id": "R102_02",
             "offer_name": "Colazione inclusa",
             "offer_price": "570",
+            "promotion": false,
+            "maximum_guest": "2"
+        }]
+    }, {
+        "room_id": "R103",
+        "room_type": "Suite",
+        "free_rooms": 3,
+        "price": {
+            "price": 900,
+            "currency": "EUR"
+        },
+        "photos": ["https://images.unsplash.com/photo-1505692952047-1a78307da8f2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=940&q=80", "https://images.unsplash.com/photo-1505693070124-1cce01268b88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=940&q=80","https://images.unsplash.com/photo-1505692433770-36f19f51681d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=940&q=80"],
+        "tags": ["Colazione inclusa", "Aria Condizionata", "Balcone"],
+        "description_short": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio.",
+        "description_complete": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et tellus sed elit iaculis imperdiet nec at libero. Aenean nec suscipit odio. Duis vel urna orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rhoncus vestibulum. Nulla quis vestibulum quam. Praesent dictum, urna quis imperdiet imperdiet, lacus leo gravida mauris, sit amet aliquam dolor quam eget turpis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed pellentesque, nulla quis convallis tempor, neque sapien consequat tellus, ac lobortis metus nisi vel purus.",
+        "offers": [{
+            "offer_id": "R103_01",
+            "offer_name": "Colazione esclusa",
+            "offer_price": "900",
+            "promotion": false,
+            "maximum_guest": "2"
+        }, {
+            "offer_id": "R103_02",
+            "offer_name": "Colazione inclusa",
+            "offer_price": "1070",
             "promotion": false,
             "maximum_guest": "2"
         }]
