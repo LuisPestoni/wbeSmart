@@ -9,46 +9,42 @@ function Basket_Data(basketNumber, basketRoomName, basketOffer, basketPrice, id)
 }
 
 //Oggetto camere
-function Room(roomID, roomType, freeRooms, price, tags, description_short, description_long, offers) {
-    this.roomID = roomID;
-    this.roomType = roomType;
-    this.freeRooms = freeRooms;
-    this.price = price;
-    this.tags = tags;
-    this.description_short = description_short;
-    this.description_long = description_long;
-    this.offers = offers;
-}
+// function Room(roomID, roomType, freeRooms, price, tags, description_short, description_long, offers) {
+//     this.roomID = roomID;
+//     this.roomType = roomType;
+//     this.freeRooms = freeRooms;
+//     this.price = price;
+//     this.tags = tags;
+//     this.description_short = description_short;
+//     this.description_long = description_long;
+//     this.offers = offers;
+// }
 
 //Oggetto offerte da inserire nelle camere
-function Offer(offer_id, offer_name, offer_price, promotion, maximum_guest) {
-    this.offer_id = offer_id;
-    this.offer_name = offer_name;
-    this.offer_price = offer_price;
-    this.promotion = promotion;
-    this.maximum_guest = maximum_guest;
-}
+// function Offer(offer_id, offer_name, offer_price, promotion, maximum_guest) {
+//     this.offer_id = offer_id;
+//     this.offer_name = offer_name;
+//     this.offer_price = offer_price;
+//     this.promotion = promotion;
+//     this.maximum_guest = maximum_guest;
+// }
 
 function apiLaunch() {
     $.ajax({
         url: 'https://script.google.com/macros/s/AKfycbwyRMe5itYGQllEs1YTNImH7lAbLra1KzadHE-i8HEOVuO56hE/exec',
         type: 'POST',
-        data: {
-            "test": "test"
-        },
         dataType: "json",
         success: function (data) {
-            console.log(data);
             const arr = data[0].rooms;
             const rooms_container = $("#rooms_container");
             for (var i in arr) {
                 let mainDiv = document.createElement("div");
                 mainDiv.id = arr[i].room_id;
                 mainDiv.classList.add("card", "col-12", "room-padding", "room-card", "img-resize");
-
                 let divCardBody = document.createElement("div");
                 divCardBody.classList.add("card-body");
 
+                //Aggiunta Nome camera e badge prezzo
                 let divBox = document.createElement("div");
                 divBox.classList.add("box");
                 let h4RoomTitle = document.createElement("h4");
@@ -63,6 +59,7 @@ function apiLaunch() {
                 $(divBox).append(h4RoomTitle, h2RoomPrice);
                 $(divCardBody).append(divBox);
 
+                //Aggiunta tags
                 let h6Tags = document.createElement("h6");
                 h6Tags.classList.add("card-subtitle", "mb-2", "text-muted");
                 let tags = arr[i].tags;
@@ -77,10 +74,9 @@ function apiLaunch() {
                 $(h6Tags).text(tagsText);
                 $(divCardBody).append(h6Tags);
 
+                //Aggiunta Carrosello
                 let divBoxRow = document.createElement("div");
                 divBoxRow.classList.add("box", "row");
-
-                //Aggiunta Carrosello
                 let divCarousel = document.createElement("div");
                 divCarousel.id = "carouselA" + i;
                 divCarousel.classList.add("carousel", "slide", "col-12", "col-sm-6");
@@ -89,7 +85,8 @@ function apiLaunch() {
                 divCarouselInner.classList.add("carousel-inner", "modal-toggle");
                 $(divCarouselInner).attr("data-toggle", "modal");
                 $(divCarouselInner).attr("data-target", "#myModal");
-                $(divCarouselInner).append("<a class='carousel-control-prev carousel-zoom'><span aria-hidden='true'><i class='fas fa-search-plus'></i></span></a>");
+                $(divCarouselInner).append("<a class='carousel-control-prev carousel-zoom'><span aria-hidden='true'>" +
+                    "<i class='fas fa-search-plus'></i></span></a>");
                 //Aggiunta foto
                 let photos = arr[i].photos;
                 for (e in photos) {
@@ -138,7 +135,7 @@ function apiLaunch() {
                     let hiddenDescr = document.createElement("p");
                     hiddenDescr.classList.add("hiddenDescr");
                     hiddenDescr.textContent = arr[i].description_complete;
-                    $(hiddenDescr).css("display","none");
+                    $(hiddenDescr).css("display", "none");
                     $(divDescr).append(hiddenDescr);
                 }
                 $(divDescr).append(pDescr);
@@ -162,7 +159,7 @@ function apiLaunch() {
                 for (var e in listaOfferte) {
                     let divCardBody = document.createElement("div");
                     divCardBody.classList.add("card-body");
-                    if(e == 0){
+                    if (e == 0) {
                         divCardBody.classList.add("card-selezione-body");
                     }
                     let h5CardTitle = document.createElement("h5");
@@ -229,34 +226,6 @@ function apiLaunch() {
                 $(rooms_container).append(divCardSelection);
                 $(".card-selection").hide();
             }
-
-
-            // var Rooms = [];
-            // for (var i in arr) {
-            //     let arrOff = arr[i].offers;
-            //     let Offers = [];
-            //     for (var e in arrOff) {
-            //         let offer = new Offer(
-            //             arrOff[e].offer_id,
-            //             arrOff[e].offer_name,
-            //             arrOff[e].offer_price,
-            //             arrOff[e].promotion,
-            //             arrOff[e].maximum_guest);
-            //         Offers.push(offer);
-            //     }
-
-            //     let room = new Room(
-            //         arr[i].room_id,
-            //         arr[i].room_type,
-            //         arr[i].free_rooms,
-            //         arr[i].price,
-            //         arr[i].tags,
-            //         arr[i].description_short,
-            //         arr[i].description_complete,
-            //         Offers);
-            //         Rooms.push(room);
-            // }
-            // console.log(Rooms);
         },
         error: function (data) {
             console.log("errore!");
