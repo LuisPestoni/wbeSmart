@@ -162,6 +162,7 @@ function apiLaunch() {
                     if (e == 0) {
                         divCardBody.classList.add("card-selezione-body");
                     }
+                    //Aggiunta badge stanze rimaste e promozione
                     let h5CardTitle = document.createElement("h5");
                     h5CardTitle.classList.add("card-title");
                     if (freeRoomCount < 5) {

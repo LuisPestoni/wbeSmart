@@ -532,7 +532,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 </div>
                 <div class="offer-details">
                     <p>Camere</p>
-                    <p><?php echo $numCamere ?></p>
+                    <p id="SelectedRoomNumber"></p>
                 </div>
                 <div class="offer-details">
                     <p>TOTALE</p>
@@ -1208,6 +1208,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 $(".room-title-append").append(h4, p);
             }
             $("#finalPrice").text(updateBasket() + "€");
+            $("#SelectedRoomNumber").text(basketList.length);
             $('#mobile-bar-details').hide();
             $(".show-mobile-details").css("transform", "");
             $('#mobile-bar').hide();
