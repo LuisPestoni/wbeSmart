@@ -25,11 +25,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
     $notti = $diff->d;
 }
 
-// $str = file_get_contents('https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1');
-// $json = json_decode($str, true);
-// echo $json;
-
-
 ?>
 
 <!DOCTYPE html>
@@ -269,6 +264,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
         </div>
         <div class="container text-center camere">
             <div id="rooms_container" class="row">
+                <!-- CODICE STATICO ROOM CARD -->
                 <!-- <div id="room1" class="card col-12 room-padding room-card img-resize">
                     <div class="card-body">
                         <div class="box">
@@ -644,38 +640,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
     <script type="text/javascript" src="./Js/objects.js"></script>
-
-    <!-- <script>
-        const USERNAME = "Luis API";
-        const PASSWORD = "eb63eb2650d3b9d499af59afa647f207";
-        const urlApi = 'https://sky-eu1.clock-software.com/pms_api/18353/4595/products.json?rates[]=46764&rates[]=46765&product_search[arrival]=2020-05-01&product_search[departure]=2020-05-03&product_search[adult_count]=2&product_search[children_count]=0&product_search[bonus_code]=&product_search[room_count]=1'
-        function apiLaunch() {
-            $.ajax({
-                url: urlApi,
-                type: 'GET',
-                username: USERNAME,
-                password: PASSWORD,
-                dataType: "jsonp",
-                data: {
-                    get_param: 'value'
-                },
-                headers: {
-                    "Authorization": "Basic " + btoa(USERNAME + ":" + PASSWORD),
-                    'Access-Control-Allow-Credentials' : true,
-                    'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'GET',
-                    'Access-Control-Allow-Headers':'application/json',
-                },
-                success: function(data) {
-                    alert("ci sei riuscito");
-                },
-                error: function(error){
-                    alert("non riuscito");
-                }
-            });
-        }
-        apiLaunch();
-    </script> -->
     <script>
         var userSearch = {
             dataArrivo: "dArrivo",

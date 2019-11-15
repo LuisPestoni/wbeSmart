@@ -900,25 +900,15 @@ div#offerta_scroll input::placeholder {
     width: 38px;
     border: 5px solid #282451;
     border: 5px solid var(--input-dark-color);
-
     border-radius: 5px;
     left: 0px;
     background: #282451;
     background: var(--input-dark-color);
-    /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
-     *to vertically center it.
-     */
     top: -5px;
 }
 
 /*Checkmark of the fake checkbox*/
 .checkbox label::after {
-    /* height: 36px;
-    width: 36px;
-    background: red;
-    
-    left: 4px;
-    top: 7px; */
     height: 32px;
     width: 33px;
     background: white;
