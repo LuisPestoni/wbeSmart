@@ -24,6 +24,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
     $diff = $dateA->diff($dateR);
     $notti = $diff->d;
 }
+$childrenMaxAge = $_COOKIE["childrenMaxAge"];
+$maxAdults = $_COOKIE["maxAdults"];
 
 ?>
 
@@ -131,7 +133,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                 <i class="fa fa-male"></i>
                                 <select class="form-control form-style" id="numAdulti" name="numAdulti">
                                     <?php
-                                    for ($i = 1; $i <= 5; $i++) {
+                                    for ($i = 1; $i <= $maxAdults; $i++) {
                                         if ($i == $numAdulti) {
                                             echo '<option selected="selected">' . $i . '</option>';
                                         } else {
@@ -193,7 +195,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     echo 'Età Bambino ' . $i;
                                     echo '<div class="form-group">';
                                     echo '<select class="form-control form-style bAge" style="padding-left: 40%" id="bambino' . $i . '" name="bambino' . $i . '">';
-                                    for ($k = 0; $k <= 15; $k++) {
+                                    for ($k = 0; $k <= $childrenMaxAge; $k++) {
                                         if ($k == $bambino[$i - 1]) {
                                             echo '<option selected="selected">' . $k . '</option>';
                                         } else {
@@ -402,7 +404,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                             <img src="./Img/camera1.jpeg" class="card-img img-resize"> 
+                             <img src="./Img/camera1.jpeg" class="card-img img-resize">
                             <div class="col-12 col-sm-6 click-room">
                                 <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
                             </div>
@@ -634,12 +636,14 @@ if ($dataArrivo != null && $dataRitorno != null) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./Js/datepicker.js"></script>
+    <script type="text/javascript" src="./Js/calendar.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./Js/animation.js"></script>
     <script type="text/javascript" src="./Js/script.js"></script>
     <script type="text/javascript" src="./Js/objects.js"></script>
+    <script type='text/javascript' src='./node_modules/tinycolor2/tinycolor.js'></script>
     <script>
         var userSearch = {
             dataArrivo: "dArrivo",
@@ -650,6 +654,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             numeroCamere: "nCamere"
         }
         apiLaunch();
+        loadData();
     </script>
     <script>
         //Inizializzazione elementi
@@ -668,7 +673,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             $('.datepicker-form').attr("readonly", "true");
         }
 
-        //Animazioni di entrata                             
+        //Animazioni di entrata
         function jsfunction() {
             const card = document.getElementById("content");
             card.classList.remove("fadeInDown");
@@ -732,8 +737,6 @@ if ($dataArrivo != null && $dataRitorno != null) {
         flag = false;
 
         $(document).on('click', '.btn-roomInfo', function() {
-        // $('.btn-roomInfo').click(function() {
-            console.log(this);
             const roomCard = $(this).parents(".room-card");
             const cardSelection = $(this).parents(".room-card").next('.card-selection');
             const nearestCS = $(this).closest(".card-selection");
@@ -793,71 +796,8 @@ if ($dataArrivo != null && $dataRitorno != null) {
         })
 
         //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
-        // var controller = [];
-        // var basketList = [];
-        // $('.select-offer').on('change', function() {
-        //     var controllId = (this).id;
-        //     var offerNumber = $(this).val();
-        //     var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
-        //     var offerPrice2 = parseInt(offerPrice, 10);
-        //     var offerName = $(this).parents(".card-body").find(".offer-subtitle").html();
-        //     var roomName = $(this).parents(".card-selection").prev(".room-card").find(".room-title").html();
-        //     var aClassName = "a" + controllId;
-
-        //     let basket = new Basket_Data(offerNumber, roomName, offerName, offerPrice2, true);
-        //     basketList.push(basket);
-        //     console.log(basketList[0].isActive);
-        //     basketList[0].remove_data();
-        //     console.log(basketList[0].isActive);
-
-        //     const cardSelection = $(this).parents(".card-selection");
-        //     const roomCard = $(this).parents(".card-selection").prev('.room-card');
-
-        //     if (this.value > 0) {
-        //         roomCard.addClass("room-selected");
-        //         if (controller.length == 0) {
-        //             $("#dpmAppend").addClass("dpAppend");
-        //             $("#dpdAppend").removeClass("dpAppend");
-        //         } else {
-        //             $("#dpdAppend").addClass("dpAppend");
-        //             $("#dpmAppend").removeClass("dpAppend");
-        //             if (controller.length == 1) {
-        //                 if (!controller.includes(controllId) && !$('.dpgAppend').length) {
-        //                     $(".dpAppendDiv").appendTo(".dpAppend");
-        //                     var gDiv = document.createElement("div");
-        //                     $(gDiv).addClass("dpgAppend row");
-        //                     var selectedRoomcount = $(".dpAppend").length + 1;
-        //                     $(gDiv).append("<p>Il totale delle camere selezionate è di 3000€</p>" + "<a><i style='vertical-align: middle;' class='fas fa-chevron-down appendIcon'></i></a>");
-        //                     $("#dpmAppend").append(gDiv);
-        //                 }
-        //             }
-        //         }
-        //         if (!controller.includes(controllId)) {
-        //             var aDiv = document.createElement("div");
-        //             aDiv.classList.add(aClassName, "row", "dpAppendDiv");
-        //             var aTable = document.createElement("table");
-        //             $(aTable).append("<td class='offerNumber'>" + offerNumber + "</td><td class='roomName'>" + roomName + "</td><td class='offerName'>" + offerName + "</td><td>Totale " + offerPrice + "</td><td class='delete-sel'><i class='fas fa-times'></i></td>");
-        //             $(aDiv).append(aTable);
-        //             $('.dpAppend').append(aDiv);
-        //             controller.push(controllId);
-        //         } else {
-        //             $('.' + aClassName).find(".offerNumber").text(offerNumber);
-        //         }
-        //     } else {
-        //         if ($(this).parents(".card-selection").find(".select-offer").val() == 0 && $(this).parents(".card-selection").find(".select-offer:eq(1)").val() == 0) {
-        //             roomCard.removeClass("room-selected");
-        //         }
-
-        //         if (controller.includes(controllId)) {
-        //             $('.' + aClassName).remove();
-        //             controller = arrayRemove(controller, controllId);
-        //         }
-        //     }
-
-        //Funzione che gestisce l'inserimento dei dati delle offerte nel carrello
         var basketList = [];
         $(document).on('change', '.select-offer', function() {
-        // $('.select-offer').on('change', function() {
             var controllId = (this).id;
             var offerNumber = $(this).val();
             var offerPrice = $(this).parents(".card-body").find(".roomOfferPrice").html();
@@ -1224,7 +1164,7 @@ if ($dataArrivo != null && $dataRitorno != null) {
             $(modal_append).empty();
             var imgToAppend = $(this).children('.carousel-item');
             $(imgToAppend).clone().appendTo(modal_append);
-            if (window.matchMedia("(max-width: 600px)").matches){
+            if (window.matchMedia("(max-width: 600px)").matches) {
                 let completeDescr = $(this).parents(".room-card").find(".hiddenDescr").text();
                 $(".modalText").text(completeDescr);
             }
@@ -1421,7 +1361,115 @@ if ($dataArrivo != null && $dataRitorno != null) {
                 const dataSuccessiva = dd + '/' + mm + '/' + y;
                 return dataSuccessiva;
             }
+
+            //Funzione colorazione calendario
+            date_arriv.datepicker()
+                .on("show", function(e) {
+                    checkMonth();
+                });
+
+            date_rit.datepicker()
+                .on("show", function(e) {
+                    checkMonth();
+                });
         })
+
+        function checkMonth() {
+            setTimeout(function() {
+                //Trova il mese visualizzato sul calendario
+                let currentMonth = $("th.datepicker-switch").first().text();
+                currentMonth = currentMonth.replace(/ /g, '');
+
+                //Controlla se il mese visualizzato è presente nell'array 
+                if (Months[currentMonth]) {
+                    //Per ogni giorno presente nell'array chiama la funzione checkAvailability che aggiorna il calendario
+                    let DayCount = Months[currentMonth].length;
+                    for (var i = 0; i < DayCount; i++) {
+                        checkAvailability(Months[currentMonth][i].available,
+                            Months[currentMonth][i].day_number,
+                            Months[currentMonth][i].minimum_day_price,
+                            Months[currentMonth][i].month);
+                    }
+                }
+            }, 0);
+        }
+
+        function checkAvailability(available, day_number, minimum_day_price) {
+            //Controlla che il giorno sia disponibile o meno
+            if (available) {
+                //Se il giorno è disponibile
+                $(".day").filter(function() {
+                    return $(this).text() == day_number &&
+                        !$(this).hasClass("dayAvailable") &&
+                        !$(this).hasClass("new") &&
+                        !$(this).hasClass("old") &&
+                        !$(this).hasClass("disabled");
+                }).addClass("dayAvailable").attr("data-value", minimum_day_price);
+            } else {
+                //Se il giorno non è disponibile
+                $(".day").filter(function() {
+                    return $(this).text() == day_number &&
+                        !$(this).hasClass("dayAvailable") &&
+                        !$(this).hasClass("new") &&
+                        !$(this).hasClass("old") &&
+                        !$(this).hasClass("disabled");
+                }).addClass("dayUnavailable");
+            }
+        }
+
+        //Funzione Aggiornamento colori
+        function updateColors(mainColor, secondColor, thirdColor, fourthColor) {
+
+            //Inietta il colore principale nel CSS
+            document.documentElement.style.setProperty('--main-secondary-color', mainColor);
+
+            //Genera un secondo colore se non è già stato indicato
+            if (secondColor) {
+                document.documentElement.style.setProperty('--main-color', secondColor);
+            } else {
+                secondColor = (tinycolor(mainColor).complement().toHexString());
+                document.documentElement.style.setProperty('--main-color', secondColor);
+            }
+
+            //Genera la cornice nelle Room Card se il colore dello sfondo è troppo chiaro
+            var tiny2 = tinycolor(secondColor);
+            if (tiny2.getBrightness() > 200) {
+                document.documentElement.style.setProperty('--room-card-border', "3px solid rgba(0,0,0,.125)");
+            } else {
+                document.documentElement.style.setProperty('--room-card-border', "1px solid rgba(0,0,0,.125)");
+            }
+
+            //Genera un terzo colore se non è già stato indicato
+            if (thirdColor) {
+                document.documentElement.style.setProperty('--input-dark-color', thirdColor);
+            } else {
+                thirdColor = tinycolor(mainColor).darken().toString();
+                document.documentElement.style.setProperty('--input-dark-color', thirdColor);
+            }
+
+            //Genera un quarto colore se non è già stato indicato
+            if (fourthColor) {
+                document.documentElement.style.setProperty('--darker-secondary-color', fourthColor);
+            } else {
+                fourthColor = tinycolor(mainColor).darken(15).toString();
+                document.documentElement.style.setProperty('--darker-secondary-color', fourthColor);
+            }
+        }
+
+        //Test funzione aggiornamento font
+
+        // const font = "Inconsolata";
+        // const fontGeneric = "sans-serif";
+        // UpdateFont(font, fontGeneric);
+        // function UpdateFont(font, fontGeneric){
+        //     if(font && fontGeneric){
+        //         document.documentElement.style.setProperty('--main-font', "'"  + font + "'," + fontGeneric);
+        //     }else{
+        //         font = "Archivo";
+        //         fontGeneric = "sans-serif";
+        //         document.documentElement.style.setProperty('--main-font', "'"  + font + "'," + fontGeneric);
+        //     }
+        // }
 
         function toolTipErrore() {
             divArrivo.setAttribute('data-original-title', 'La data inserita non è corretta.');

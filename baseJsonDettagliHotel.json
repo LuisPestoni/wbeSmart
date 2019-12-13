@@ -1,0 +1,323 @@
+﻿{
+  "maxAdults": 4,
+  "maxChildren": 3,
+  "childrenMaxAge": 16,
+  "mainColor": "#8C0C17",
+  "secondColor": "#ecf0f1",
+  "thirdColor": "",
+  "fourthColor": "",
+  "font": "Roboto",
+  "fontGeneric": "serif",
+  "calendar": [
+    {
+      "month": "Gennaio2020",
+      "days": [
+        {
+          "day_number": 1,
+          "available": true,
+          "minimum_day_price": "250€"
+        },
+        {
+          "day_number": 2,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 3,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 4,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 5,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 6,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 7,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 8,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 9,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 10,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 11,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 12,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 13,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 14,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 15,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 16,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 17,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 18,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 19,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 20,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 21,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 22,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 23,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 24,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 25,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 26,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 27,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 28,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 29,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 30,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 31,
+          "available": true,
+          "minimum_day_price": "350€"
+        }
+      ]
+    },
+    {
+      "month": "Febbraio2020",
+      "days": [
+        {
+          "day_number": 1,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 2,
+          "available": true,
+          "minimum_day_price": "250€"
+        },
+        {
+          "day_number": 3,
+          "available": true,
+          "minimum_day_price": "250€"
+        },
+        {
+          "day_number": 4,
+          "available": true,
+          "minimum_day_price": "250€"
+        },
+        {
+          "day_number": 5,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 6,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 7,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 8,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 9,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 10,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 11,
+          "available": true,
+          "minimum_day_price": "450€"
+        },
+        {
+          "day_number": 12,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 13,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 14,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 15,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 16,
+          "available": true,
+          "minimum_day_price": "650€"
+        },
+        {
+          "day_number": 17,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 18,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 19,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 20,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 21,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 22,
+          "available": true,
+          "minimum_day_price": "350€"
+        },
+        {
+          "day_number": 23,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 24,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 25,
+          "available": true,
+          "minimum_day_price": "550€"
+        },
+        {
+          "day_number": 26,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 27,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 28,
+          "available": false,
+          "minimum_day_price": ""
+        },
+        {
+          "day_number": 29,
+          "available": false,
+          "minimum_day_price": ""
+        }
+      ]
+    }
+  ]
+}

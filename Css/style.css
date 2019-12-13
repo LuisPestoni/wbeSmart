@@ -2,6 +2,7 @@
 :root {
     --main-color: salmon;
     --main-secondary-color: rgba(19, 15, 64, 1);
+    --darker-secondary-color: #3B3760;
     --overlay-color: rgba(19, 15, 64, 0.5);
     --input-bright-color: rgb(255, 255, 255, .5);
     --input-dark-color: #282451;
@@ -11,6 +12,7 @@
     --error-color: #e74c3c;
     --correct-color: #28A745;
     --input-border: 2px solid;
+    --room-card-border: 1px solid rgba(0, 0, 0, .125);
 }
 
 html,
@@ -42,9 +44,12 @@ body {
 }
 
 .card-style {
-
     background-color: rgba(19, 15, 64, 0);
     border: none;
+}
+
+.room-card {
+    border: var(--room-card-border);
 }
 
 .ct-style {
@@ -130,7 +135,10 @@ div.down .inputIcon i {
     color: var(--input-font-color);
 }
 
-
+.room-selected .text-muted {
+    color: white !important;
+    opacity: 0.7;
+}
 
 select.form-style {
     padding-left: 40px;
@@ -379,7 +387,7 @@ h5.testo-card {
     align-items: center;
 }
 
-.card-subtitle{
+.card-subtitle {
     text-align: left;
 }
 
@@ -400,7 +408,8 @@ h5.testo-card {
     justify-content: center;
 }
 
-.btn-roomInfo-Text, .btn-arrow{
+.btn-roomInfo-Text,
+.btn-arrow {
     vertical-align: middle;
 }
 
@@ -434,7 +443,7 @@ h5.testo-card {
     text-align: left;
 }
 
-.roomOfferPrice{
+.roomOfferPrice {
     font-size: 30px;
 }
 
@@ -475,7 +484,7 @@ div.room-selected .btn-roomInfo {
 #divPrenotaDetails {
     color: white;
     padding: 15px 0px 15px 15px;
-    background-color: #3B3760;
+    background-color: var(--darker-secondary-color);
 }
 
 .sticky {
@@ -682,7 +691,7 @@ div#offerta_scroll input::placeholder {
     opacity: 0.5;
 }
 
-.delete-sel{
+.delete-sel {
     cursor: pointer;
 }
 
@@ -755,7 +764,7 @@ div#offerta_scroll input::placeholder {
     width: 50px;
 }
 
-.mOffer{
+.mOffer {
     width: 90%;
     border-bottom: 3px solid white;
     margin-bottom: 10px;
@@ -870,6 +879,29 @@ div#offerta_scroll input::placeholder {
 .h-100 {
     width: 940px;
     height: 650px;
+}
+
+.dayAvailable {
+    color: white;
+    background-color: #1BCD56;
+    border-radius: 0% !important;
+}
+
+.dayAvailable::after {
+    content: "\A" attr(data-value);
+    white-space: pre;
+}
+
+.dayAvailable:hover{
+    color: white;
+    background-color: #17A847 !important;
+}
+
+.dayUnavailable {
+    color: white;
+    background-color: #CD331B;
+    pointer-events: none;
+    border-radius: 0% !important;
 }
 
 /* ------------------------------------------------------------CHECKBOX CSS--------------------------------------------------- */
@@ -1031,6 +1063,31 @@ div#offerta_scroll input::placeholder {
         width: 50px;
         height: 50px;
     }
+
+    .room-card .carousel-inner {
+        height: 345px;
+    }
+
+    .table-condensed {
+        width: 20vw;
+    }
+
+    /* .dropdown-menu {
+        left: 1vw !important;
+    } */
+
+    tfoot{
+        display: none;
+    }
+
+    .datepicker table tr {
+        height: 50px;
+        width: 80px;
+    }
+
+    .table-condensed {
+         width: 40vw;
+    }
 }
 
 /* Mobile */
@@ -1055,7 +1112,7 @@ div#offerta_scroll input::placeholder {
         background-color: black;
     }
 
-    .text-prova{
+    .text-prova {
         padding-left: 0px;
     }
 
@@ -1071,7 +1128,7 @@ div#offerta_scroll input::placeholder {
         height: 66px;
     }
 
-    #mobile-price{
+    #mobile-price {
         margin-bottom: 0px;
     }
 
@@ -1181,7 +1238,7 @@ div#offerta_scroll input::placeholder {
         padding: 5px 20px;
     }
 
-    .final-img{
+    .final-img {
         width: 0px !important;
     }
 

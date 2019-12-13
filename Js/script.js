@@ -1,5 +1,5 @@
 //Codice che gestisce i contatori
-$(document).ready(function () {
+function loadCounters (maxAdults, maxChildren, childrenMaxAge) {
     const EmptyDiv = document.getElementById('EmptyDiv');
     const eDiv = document.getElementById('eDiv');
     const input_bambino = document.querySelector('#numBambini');
@@ -38,7 +38,7 @@ $(document).ready(function () {
     $('.piu').click(function () {
         var $input = $(this).parent().find('input');
         var count = (parseInt($input.val()) + 1);
-        count = count > 5 ? 5 : count;
+        count = count > maxAdults ? maxAdults : count;
         $input.val(count);
         $input.change();
         return false;
@@ -61,18 +61,18 @@ $(document).ready(function () {
     $('.plusBamibini').click(function () {
         var $input = $(this).parent().find('input');
         var count = (parseInt($input.val()) + 1);
-        count = count > 5 ? 5 : count;
+        count = count > maxChildren ? maxChildren : count;
         $input.val(count);
         $input.change();
         EmptyDiv.classList.add("row", "d-flex", "flex-row", "input-spacing");
-        if (count <= 5) {
-            if (count == 5) {
+        if (count <= maxChildren) {
+            if (count == maxChildren) {
                 if (!countOver) {
-                    addSelect(EmptyDiv, count, "form-select");
+                    addSelect(EmptyDiv, count, "form-select", childrenMaxAge);
                     countOver = true;
                 }
             } else {
-                addSelect(EmptyDiv, count, "form-select");
+                addSelect(EmptyDiv, count, "form-select", childrenMaxAge);
             }
 
         }
@@ -94,30 +94,30 @@ $(document).ready(function () {
     });
 
     $('.plusB2').click(function () {
+        var currentS = $(".bAge").length;
         var $input = $(this).parent().find('input');
         var count = (parseInt($input.val()) + 1);
-        count = count > 5 ? 5 : count;
+        count = count > maxChildren ? maxChildren : count;
         $input.val(count);
         $input.change();
-        if (count <= 5) {
-            if (count == 5) {
+        if (currentS < maxChildren) {
+            if (count == maxChildren) {
                 if (!countOver) {
-                    addS2(eDiv, count, "form-style");
+                    addS2(eDiv, count, "form-style", childrenMaxAge);
                     countOver = true;
-                } else {
-
                 }
             } else {
-                addS2(eDiv, count, "form-style");
+                addS2(eDiv, count, "form-style", childrenMaxAge);
             }
 
         }
         document.getElementById("nBambini").value = count;
+        console.log($(".bAge").length);
         return false;
     });
     
 
-    function addSelect(div, count, style) {
+    function addSelect(div, count, style, childrenMaxAge) {
         var name = 'bambino' + count;
         var selectText = "Seleziona l'età del bambino " + count;
         var x = document.createElement("div");
@@ -133,7 +133,7 @@ $(document).ready(function () {
         var s = document.createElement("select");
         s.classList.add("form-control", style);
         s.setAttribute("name", name);
-        for (var i = 0; i <= 15; i++) {
+        for (var i = 0; i <= childrenMaxAge; i++) {
             var opt = document.createElement('option');
             opt.value = i;
             opt.innerHTML = i;
@@ -144,7 +144,7 @@ $(document).ready(function () {
         $('[data-toggle="tooltip-select"]').tooltip();
     }
 
-    function addS2(div, count, style) {
+    function addS2(div, count, style, childrenMaxAge) {
         var name = 'bambino' + count;
         var testo = "Età Bambino "+ count;
         var x = document.createElement("div");
@@ -157,7 +157,7 @@ $(document).ready(function () {
         s.classList.add("form-control", style, "bAge");
         s.style.paddingLeft = "40%";
         s.setAttribute("name", name);
-        for (var i = 0; i <= 15; i++) {
+        for (var i = 0; i <= childrenMaxAge; i++) {
             var opt = document.createElement('option');
             opt.value = i;
             opt.innerHTML = i;
@@ -169,4 +169,4 @@ $(document).ready(function () {
         div.appendChild(x);
         $('[data-toggle="tooltip-select"]').tooltip();
     }
-});
+};
