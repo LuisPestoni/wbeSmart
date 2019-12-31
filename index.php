@@ -124,22 +124,22 @@ $maxAdults = $_COOKIE["maxAdults"];
                             <div class="input-group inputIcon">
                                 <div class="input-group-prepend">
                                     <input class="form-control form-style datepicker-form" id="dataRitorno2" name="dataRitorno" value="<?php echo $dataRitorno; ?>" type="text" autocomplete="off" data-date-start-date="0d">
-                                    <i class="form-control-feedback fa fa-calendar-alt"></i>
+                                    <i class="form-control-feedback fa fa-calendar"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto">
                             <div class="form-group inputIcon">
                                 <i class="fa fa-male"></i>
-                                <select class="form-control form-style" id="numAdulti" name="numAdulti">
+                                <select class="form-control form-style" id="numAdulti2" name="numAdulti">
                                     <?php
-                                    for ($i = 1; $i <= $maxAdults; $i++) {
-                                        if ($i == $numAdulti) {
-                                            echo '<option selected="selected">' . $i . '</option>';
-                                        } else {
-                                            echo '<option>' . $i . '</option>';
-                                        }
-                                    }
+                                                                                                                                        for ($i = 1; $i <= $maxAdults; $i++) {
+                                                                                                                                            if ($i == $numAdulti) {
+                                                                                                                                                echo '<option selected="selected">' . $i . '</option>';
+                                                                                                                                            } else {
+                                                                                                                                                echo '<option>' . $i . '</option>';
+                                                                                                                                            }
+                                                                                                                                        }
                                     ?>
                                 </select>
                             </div>
@@ -155,15 +155,15 @@ $maxAdults = $_COOKIE["maxAdults"];
                         <div class="col-auto">
                             <div class="form-group inputIcon">
                                 <i class="fas fa-bed"></i>
-                                <select class="form-control form-style" id="numCamere" name="numCamere">
+                                <select class="form-control form-style" id="numCamere2" name="numCamere">
                                     <?php
-                                    for ($i = 1; $i <= 5; $i++) {
-                                        if ($i == $numCamere) {
-                                            echo '<option selected="selected">' . $i . '</option>';
-                                        } else {
-                                            echo '<option>' . $i . '</option>';
-                                        }
-                                    }
+                                                                                                                                        for ($i = 1; $i <= 5; $i++) {
+                                                                                                                                            if ($i == $numCamere) {
+                                                                                                                                                echo '<option selected="selected">' . $i . '</option>';
+                                                                                                                                            } else {
+                                                                                                                                                echo '<option>' . $i . '</option>';
+                                                                                                                                            }
+                                                                                                                                        }
                                     ?>
                                 </select>
                             </div>
@@ -183,29 +183,29 @@ $maxAdults = $_COOKIE["maxAdults"];
                             <div class="col-12 col-md-3 d-flex flex-row input-spacing" style="margin-top: 0px">
                                 <button type="button" class="minusB2 btn"><i class="counter-btn fa fa-minus"></i></button>
                                 <div data-toggle="tooltip" data-placement="top" title="Dai 3 fino ai 12 anni" class="col-5 col-md-auto number inputIcon counter-spacing">
-                                    <input class="form-control form-style" id="numBambini" name="numBambini" type="text" value="<?php echo $numBambini; ?>" readonly />
+                                    <input class="form-control form-style" id="numBambini2" name="numBambini" type="text" value="<?php echo $numBambini; ?>" readonly />
                                     <i class="fas fa-child child-spacing"></i>
                                 </div>
                                 <button type="button counter-btn" class="plusB2 btn"><i class="counter-btn fa fa-plus"></i></button>
                             </div>
                             <div id="eDiv" class="form-row align-items-center row" style="padding-top: 10px; padding-bottom: 10px; padding-left: 15px; margin-top: 10px">
                                 <?php
-                                for ($i = 1; $i <= $numBambini; $i++) {
-                                    echo '<div class="col-6 col-md-2" style="color:white;">';
-                                    echo 'Età Bambino ' . $i;
-                                    echo '<div class="form-group">';
-                                    echo '<select class="form-control form-style bAge" style="padding-left: 40%" id="bambino' . $i . '" name="bambino' . $i . '">';
-                                    for ($k = 0; $k <= $childrenMaxAge; $k++) {
-                                        if ($k == $bambino[$i - 1]) {
-                                            echo '<option selected="selected">' . $k . '</option>';
-                                        } else {
-                                            echo '<option>' . $k . '</option>';
-                                        }
-                                    }
-                                    echo '</select>';
-                                    echo '</div>';
-                                    echo '</div>';
-                                }
+                                                                                                                                        for ($i = 1; $i <= $numBambini; $i++) {
+                                                                                                                                            echo '<div class="col-6 col-md-2" style="color:white;">';
+                                                                                                                                            echo 'Età Bambino ' . $i;
+                                                                                                                                            echo '<div class="form-group">';
+                                                                                                                                            echo '<select class="form-control form-style bAge" style="padding-left: 40%" id="bambino' . $i . '" name="bambino' . $i . '">';
+                                                                                                                                            for ($k = 0; $k <= $childrenMaxAge; $k++) {
+                                                                                                                                                if ($k == $bambino[$i - 1]) {
+                                                                                                                                                    echo '<option selected="selected">' . $k . '</option>';
+                                                                                                                                                } else {
+                                                                                                                                                    echo '<option>' . $k . '</option>';
+                                                                                                                                                }
+                                                                                                                                            }
+                                                                                                                                            echo '</select>';
+                                                                                                                                            echo '</div>';
+                                                                                                                                            echo '</div>';
+                                                                                                                                        }
                                 ?>
                             </div>
                         </div>
@@ -330,9 +330,9 @@ $maxAdults = $_COOKIE["maxAdults"];
                                     <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer0" id="nRoom1Offer1" name="nRoom1Offer1">
                                         <?php
-                                        // for ($i = 0; $i <= 5; $i++) {
-                                        //     echo '<option>' . $i . '</option>';
-                                        // }
+                                                                                                                                        // for ($i = 0; $i <= 5; $i++) {
+                                                                                                                                        //     echo '<option>' . $i . '</option>';
+                                                                                                                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -359,9 +359,9 @@ $maxAdults = $_COOKIE["maxAdults"];
                                     <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer1" id="nRoom2Offer2" name="nRoom2Offer2">
                                         <?php
-                                        // for ($i = 0; $i <= 5; $i++) {
-                                        //     echo '<option>' . $i . '</option>';
-                                        // }
+                                                                                                                                        // for ($i = 0; $i <= 5; $i++) {
+                                                                                                                                        //     echo '<option>' . $i . '</option>';
+                                                                                                                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -436,9 +436,9 @@ $maxAdults = $_COOKIE["maxAdults"];
                                     <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer0" id="nRoom2Offer1" name="nRoom2Offer1">
                                         <?php
-                                        // for ($i = 0; $i <= 5; $i++) {
-                                        //     echo '<option>' . $i . '</option>';
-                                        // }
+                                                                                                                                        // for ($i = 0; $i <= 5; $i++) {
+                                                                                                                                        //     echo '<option>' . $i . '</option>';
+                                                                                                                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -465,9 +465,9 @@ $maxAdults = $_COOKIE["maxAdults"];
                                     <i class="fa fa-bed"></i>
                                     <select class="form-control form-style select-offer room-offer1" id="nRoom1Offer2" name="nRoom1Offer2">
                                         <?php
-                                        // for ($i = 0; $i <= 5; $i++) {
-                                        //     echo '<option>' . $i . '</option>';
-                                        // }
+                                                                                                                                        // for ($i = 0; $i <= 5; $i++) {
+                                                                                                                                        //     echo '<option>' . $i . '</option>';
+                                                                                                                                        // }
                                         ?>
                                     </select>
                                 </div>
@@ -1193,6 +1193,8 @@ $maxAdults = $_COOKIE["maxAdults"];
                 container: container,
                 todayHighlight: true,
                 autoclose: true,
+                weekStart: 1,
+                // language: "es",
             })
 
             // Inizializzazione DatePicker Data Ritorno
@@ -1204,6 +1206,7 @@ $maxAdults = $_COOKIE["maxAdults"];
                 container: cont,
                 todayHighlight: false,
                 autoclose: true,
+                weekStart: 1,
             });
 
             //Controlli datePicker data di Arrivo
@@ -1229,6 +1232,7 @@ $maxAdults = $_COOKIE["maxAdults"];
                         arrivoIcon.classList.add("CorrectIcon");
                         rimuoviToolTip();
                     }
+                    checkButton();
                 });
 
             date_arriv.datepicker()
@@ -1254,6 +1258,8 @@ $maxAdults = $_COOKIE["maxAdults"];
                         arrivoIcon.classList.add("CorrectIcon");
 
                     }
+                    checkButton();
+                    getNextDay();
                 });
 
             date_arriv.datepicker()
@@ -1263,6 +1269,7 @@ $maxAdults = $_COOKIE["maxAdults"];
                     ritornoIcon.classList.remove("CorrectIcon");
                     btnSalmon.setAttribute("disabled", "");
                     rimuoviToolTipRit();
+                    checkButton();
                 });
 
             //Controlli datePicker data di Partenza
@@ -1302,6 +1309,7 @@ $maxAdults = $_COOKIE["maxAdults"];
                             }
                         }
                     }
+                    checkButton();
                 });
 
             date_rit.datepicker()
@@ -1340,19 +1348,49 @@ $maxAdults = $_COOKIE["maxAdults"];
                             }
                         }
                     }
+                    checkButton();
                 });
 
             //Funzione che cambia la data minima nel campo Data Partenza
             date_arriv2.datepicker()
                 .on("changeDate", function(e) {
-                    const data_min = date_arriv2.datepicker('getDate');
-                    date_rit2.datepicker('setStartDate', data_min);
+                    date_rit2.datepicker('setStartDate', getDataMin2());
+                    date_rit2.datepicker("update", "");
                 });
+
+            var openCounter = 0;
+            date_rit2.datepicker()
+                .on("show", function(e) {
+                    if(openCounter == 0){
+                        date_rit2.datepicker('setStartDate', getDataMin2());
+                    }
+                    openCounter++;
+                });
+
+            function checkButton() {
+                if ($(".is-invalid").length == 2) {
+                    $(".btnSalmon").attr("disabled", false);
+                } else {
+                    $(".btnSalmon").attr("disabled", "");
+                }
+            }
 
             //Funzione che trova la data minima per il campo Data Ritorno
             function getDataMin() {
                 const data_min = date_arriv.datepicker('getDate');
                 const data_UTC = date_arriv.datepicker('getUTCDate');
+                let date1 = new Date(data_UTC);
+                date1.setUTCDate(date1.getDate() + 1);
+                const dd = date1.getDate();
+                const mm = date1.getMonth() + 1;
+                const y = date1.getFullYear();
+                const dataSuccessiva = dd + '/' + mm + '/' + y;
+                return dataSuccessiva;
+            }
+
+            function getDataMin2() {
+                const data_min = date_arriv2.datepicker('getDate');
+                const data_UTC = date_arriv2.datepicker('getUTCDate');
                 let date1 = new Date(data_UTC);
                 date1.setUTCDate(date1.getDate() + 1);
                 const dd = date1.getDate();
@@ -1415,6 +1453,9 @@ $maxAdults = $_COOKIE["maxAdults"];
                         !$(this).hasClass("disabled");
                 }).addClass("dayUnavailable");
             }
+
+            // $(".new").text("").css("pointer-events", "none");
+            // $(".old").text("").css("pointer-events", "none");
         }
 
         //Funzione Aggiornamento colori
@@ -1512,6 +1553,37 @@ $maxAdults = $_COOKIE["maxAdults"];
             return totale;
         }
 
+        //Calcola la data di oggi e quella di domani
+        function getTodayandTomorrow() {
+
+            //Data di oggi
+            var today = new Date();
+            $("#dataArrivo").datepicker('setDate', today);
+
+            //Funzione che permette di aggiungere giorni ad una data
+            Date.prototype.addDays = function(days) {
+                var date = new Date(this.valueOf());
+                date.setDate(date.getDate() + days);
+                return date;
+            }
+
+            //Data di domani
+            var tomorrow = new Date();
+            tomorrow = tomorrow.addDays(1);
+            $("#dataRitorno").datepicker('setDate', tomorrow);
+        }
+
+        // function getNextDay() {
+        //     var provaData = new Date($("#dataArrivo").datepicker("getUTCDate"));
+        //     Date.prototype.addDays = function(days) {
+        //         var date = new Date(this.valueOf());
+        //         date.setDate(date.getDate() + days);
+        //         return date;
+        //     }
+        //     provaData = provaData.addDays(3);
+        //     $("#dataRitorno").datepicker('setDate', provaData);
+        // }
+
         function msieversion() {
             var ua = window.navigator.userAgent;
             var msie = ua.indexOf("MSIE ");
@@ -1527,12 +1599,12 @@ $maxAdults = $_COOKIE["maxAdults"];
         }
     </script>
     <?php
-    //Chiamata alla funzione che gestisce le animazioni
-    if ($n != null) {
-        echo '<script type="text/javascript">',
-            'jsfunction();',
-            '</script>';
-    }
+                                                                                                                                        //Chiamata alla funzione che gestisce le animazioni
+                                                                                                                                        if ($n != null) {
+                                                                                                                                            echo '<script type="text/javascript">',
+                                                                                                                                                'jsfunction();',
+                                                                                                                                                '</script>';
+                                                                                                                                        }
     ?>
 
     <script>

@@ -61,6 +61,12 @@ function loadData() {
             createCookie("childrenMaxAge", childrenMaxAge, "10");
             createCookie("maxAdults", maxAdults, "10");
 
+            //Parametri data
+            const startingDate = data.startingDate;
+            if(startingDate){
+                getTodayandTomorrow();
+            }
+
             //Parametri colori
             const mainColor = data.mainColor;
             const secondColor = data.secondColor;
@@ -92,3 +98,4 @@ function createCookie(name, value, days) {
     }
     document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
 }
+
